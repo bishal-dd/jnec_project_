@@ -1,0 +1,17 @@
+.nav-link:hover {
+  background-color: rgb(252, 195, 142);
+}
+a {
+  color: white;
+  border-radius: 25px;
+}
+#navbar {
+  background-color: #edf878;
+  color: black;
+}
+#navbarTogglerDemo03 {
+  margin-left: 200px;
+}
+#logo_image {
+  right: 0px;
+}

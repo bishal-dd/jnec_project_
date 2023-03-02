@@ -1,0 +1,12 @@
+#event-page {
+  background-color: rgba(255, 255, 255, 0.809);
+}
+
+.btn {
+  font-size: 19px;
+  padding: 9px 10px;
+}
+#event_image {
+  height: 200px;
+  object-fit: cover;
+}

@@ -8,6 +8,7 @@ const cloudinary = require("cloudinary").v2;
 const session = require("express-session");
 const path = require("path");
 const nodemailer = require("nodemailer");
+const fs = require("fs");
 
 app.use(cors());
 app.use(express.json());
@@ -96,6 +97,7 @@ app.post("/api/post", upload.single("event_image"), async (req, res) => {
       if (err) {
         console.log(err);
       } else {
+        fs.unlinkSync(req.file.path);
         res.send("event added");
       }
     }

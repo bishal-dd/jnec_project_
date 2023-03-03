@@ -94,6 +94,16 @@ export default function AdminEventComp() {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="eventImage">Event Date:</label>
+              <input
+                type="date"
+                className="form-control"
+                id="eventDate"
+                name="event_date"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="eventLink">Event Link:</label>
               <input
                 type="url"

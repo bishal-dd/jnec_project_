@@ -23,7 +23,7 @@ export default function AdminEventComp() {
     formData.append("event_description", state.event_description);
     formData.append("event_link", state.event_link);
     formData.append("event_image", state.event_image);
-    formData.append("event_image", state.event_date);
+    formData.append("event_date", state.event_date);
 
     try {
       await axios

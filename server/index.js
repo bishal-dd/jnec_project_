@@ -81,16 +81,16 @@ app.post("/api/feedback", (req, res) => {
 const upload = multer({ dest: "temp/" });
 
 app.post("/api/post", upload.single("event_image"), async (req, res) => {
-  const { event_name, event_description, event_link } = req.body;
+  const { event_name, event_description, event_date, event_link } = req.body;
 
   const result = await cloudinary.uploader.upload(req.file.path);
   const imageURL = result.secure_url;
   console.log(imageURL);
   const sqlInsert =
-    "INSERT INTO events (event_name, event_description, event_image, event_link) VALUES (?, ?, ?, ?);";
+    "INSERT INTO events (event_name, event_description, event_image, event_date, event_link, ) VALUES (?, ?, ?, ?, ?);";
   db.query(
     sqlInsert,
-    [event_name, event_description, imageURL, event_link],
+    [event_name, event_description, imageURL, event_date, event_link],
     (err, result) => {
       if (err) {
         console.log(err);

@@ -8,6 +8,7 @@ export default function AdminEventComp() {
     event_name: "",
     event_description: "",
     event_image: null,
+    event_date: "",
     event_link: "",
   };
 
@@ -22,6 +23,7 @@ export default function AdminEventComp() {
     formData.append("event_description", state.event_description);
     formData.append("event_link", state.event_link);
     formData.append("event_image", state.event_image);
+    formData.append("event_image", state.event_date);
 
     try {
       await axios
@@ -44,6 +46,10 @@ export default function AdminEventComp() {
 
     if (name === "event_image") {
       setState({ ...state, [name]: files[0] });
+    } else if (name === "event_date") {
+      const [year, month, day] = value.split("-"); // split the input value into year, month, and day
+      const formattedDate = `${day}/${month}/${year}`; // format the date as dd/mm/yyyy
+      setState({ ...state, [name]: formattedDate });
     } else {
       setState({ ...state, [name]: value });
     }

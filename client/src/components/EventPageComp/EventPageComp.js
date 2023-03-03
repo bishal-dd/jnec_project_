@@ -21,27 +21,25 @@ export default function EventPageComp() {
     loadEvent();
   }, []);
   return (
-    <div>
-      <div class="container">
-        <div class="row mt-4">
+    <>
+      <div class="container-xxl">
+        <div class="row mt-4" id="mainrow">
           {event.map((item, index) => {
             return (
               <div class="col mt-5" key={item.id}>
                 <div class="card">
-                  <div class="col-md-12 text-center">
-                    <img
-                      src={item.event_image}
-                      class="card-img-top img-fluid"
-                      alt="card-image"
-                      id="event_image"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title">{item.event_name}</h4>
-                      <p class="card-text">{item.event_description}</p>
-                      <a class="link-primary" href="#">
-                        Read More
-                      </a>
-                    </div>
+                  <img
+                    src={item.event_image}
+                    class="card-img-top img-fluid w-100 h-100"
+                    alt="card-image"
+                    id="event_image"
+                  />
+                  <div class="card-body">
+                    <h4 class="card-title">{item.event_name}</h4>
+                    <p class="card-text">{item.event_description}</p>
+                    <a class="link-primary" href="#">
+                      Read More
+                    </a>
                   </div>
                 </div>
               </div>
@@ -49,6 +47,6 @@ export default function EventPageComp() {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 }

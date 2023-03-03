@@ -23,10 +23,10 @@ export default function EventPageComp() {
   return (
     <div>
       <div class="container">
-        <div class="row gy-3">
+        <div class="row mt-4">
           {event.map((item, index) => {
             return (
-              <div class="col" key={item.id}>
+              <div class="col mt-5" key={item.id}>
                 <div class="card">
                   <div class="col-md-12 text-center">
                     <img

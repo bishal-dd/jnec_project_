@@ -25,7 +25,7 @@ export default function EventComp() {
     <>
       <div id="event-page" class="py-5">
         <div class="container">
-          <div class="row gy-3">
+          <div class="row mt-4">
             {event.map((item, index) => {
               return (
                 <div class="col" key={item.id}>

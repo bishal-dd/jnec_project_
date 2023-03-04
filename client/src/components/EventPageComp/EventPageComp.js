@@ -22,24 +22,23 @@ export default function EventPageComp() {
   }, []);
   return (
     <>
-      <div class="container-xxl">
-        <div class="row mt-4" id="mainrow">
-          {event.map((item, index) => {
+      <div className="container">
+        <div className="row mt-5">
+          {event.map((item) => {
             return (
-              <div class="col mt-5" key={item.id}>
+              <div className="col">
                 <div class="card">
                   <img
+                    class="card-img-top w-100 h-100"
                     src={item.event_image}
-                    class="card-img-top img-fluid w-100 h-100"
-                    alt="card-image"
-                    id="event_image"
+                    alt="Card image cap"
                   />
                   <div class="card-body">
-                    <h4 class="card-title">{item.event_name}</h4>
-                    <p class="card-text">{item.event_description}</p>
-                    <a class="link-primary" href="#">
-                      Read More
-                    </a>
+                    <h5 class="card-title">{item.event_name}</h5>
+                    <p class="card-text">
+                      {item.event_description}
+                      DJHDJSHJDHSJHDJHSDJHHHHDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDHHHHHHHHHHHHHDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+                    </p>
                   </div>
                 </div>
               </div>

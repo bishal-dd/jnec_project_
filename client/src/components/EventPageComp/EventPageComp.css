@@ -5,3 +5,7 @@
 .card {
   width: 18rem;
 }
+.card-title {
+  display: inline-block;
+  margin-right: 150px; /* adjust the value as needed */
+}

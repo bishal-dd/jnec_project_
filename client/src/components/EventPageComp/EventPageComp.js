@@ -36,6 +36,7 @@ export default function EventPageComp() {
                   />
                   <div class="card-body">
                     <h5 class="card-title">{item.event_name}</h5>
+                    <span className="">{item.event_date}</span>
                     <p class="card-text">{item.event_description}</p>
                   </div>
                 </div>

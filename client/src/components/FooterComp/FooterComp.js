@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 //import  Image  from 'react-bootstrap';
 import {
   FaFacebook,
@@ -66,6 +67,11 @@ export default function FooterComp() {
                 <a href="#">
                   <FaEnvelope /> Example@gmail.com
                 </a>
+              </li>
+              <li>
+                <Link to="/adminlogin" className="text-dark">
+                  admin
+                </Link>
               </li>
             </ul>
           </div>

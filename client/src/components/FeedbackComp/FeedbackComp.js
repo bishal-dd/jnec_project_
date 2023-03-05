@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./feedbackcomp.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function FeedbackComp() {
   const [name, setName] = useState("");
@@ -19,11 +20,11 @@ export default function FeedbackComp() {
         message,
       })
       .then((response) => {
-        alert(response.data);
+        toast.success(response.data);
       })
       .catch((error) => {
         console.log(error);
-        alert("Error submitting feedback");
+        toast.error("Error submitting feedback");
       });
   };
   return (

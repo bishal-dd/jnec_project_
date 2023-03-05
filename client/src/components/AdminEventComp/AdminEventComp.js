@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import "./admineventcomp.css";
 
 export default function AdminEventComp() {
   const initialState = {
@@ -60,75 +61,69 @@ export default function AdminEventComp() {
 
   return (
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h2>Create an Event</h2>
-          <form encType="multipart/form-data">
-            <div className="form-group">
-              <label htmlFor="eventName">Event Name:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="eventName"
-                placeholder="Enter event name"
-                name="event_name"
-                value={event_name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="eventDescription">Event Description:</label>
-              <textarea
-                className="form-control"
-                id="eventDescription"
-                rows="3"
-                placeholder="Enter event description"
-                name="event_description"
-                value={event_description}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="eventImage">Event Image:</label>
-              <input
-                type="file"
-                className="form-control-file"
-                id="eventImage"
-                name="event_image"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="eventImage">Event Date:</label>
-              <input
-                type="date"
-                className="form-control"
-                id="eventDate"
-                name="event_date"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="eventLink">Event Link:</label>
-              <input
-                type="url"
-                className="form-control"
-                id="eventLink"
-                placeholder="Enter event link"
-                name="event_link"
-                value={event_link}
-                onChange={handleChange}
-              />
-            </div>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={handleSubmit}
-            >
-              Create Event
-            </button>
-          </form>
+      <div id="event-container">
+        <div className="row justify-content-center">
+          <div className="col">
+            <h2 className="text-center p-3">Create an Event</h2>
+            <form class="rounded-4 p-5" encType="multipart/form-data">
+              <div className="form-group mb-2">
+                <label htmlFor="eventName">Event Name:</label>
+                <input
+                  type="text"
+                  className="rounded py-2 form-control"
+                  id="eventName"
+                  placeholder="Enter event name"
+                  name="event_name"
+                  value={event_name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group mb-2">
+                <label htmlFor="eventDescription">Event Description:</label>
+                <textarea
+                  className="rounded py-2 form-control"
+                  id="eventDescription"
+                  rows="3"
+                  placeholder="Enter event description"
+                  name="event_description"
+                  value={event_description}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group mb-2">
+                <label htmlFor="eventImage">Event Image:</label>
+                <input
+                  type="file"
+                  className="py-2 form-control-file"
+                  id="eventImage"
+                  name="event_image"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group mb-2">
+                <label htmlFor="eventLink">Event Link:</label>
+                <input
+                  type="url"
+                  className="rounded py-2 form-control"
+                  id="eventLink"
+                  placeholder="Enter event link"
+                  name="event_link"
+                  value={event_link}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="d-grid py-2">
+                <button
+                  type="submit"
+                  className="btn bg-success py-2"
+                  onClick={handleSubmit}
+                >
+                  Create Event
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

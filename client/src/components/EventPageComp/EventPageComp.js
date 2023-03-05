@@ -21,23 +21,53 @@ export default function EventPageComp() {
   useEffect(() => {
     loadEvent();
   }, []);
+  const [showFullDescriptions, setShowFullDescriptions] = useState([]);
+
+  const toggleShowFullDescription = (index) => {
+    setShowFullDescriptions((prev) => {
+      const newArr = [...prev];
+      newArr[index] = !newArr[index];
+      return newArr;
+    });
+  };
   return (
     <>
       <div className="container">
         <div className="row mt-5">
-          {event.map((item) => {
+          {event.map((item, index) => {
+            const maxLength = 200;
+            const shortDescription = item.event_description.substring(
+              0,
+              maxLength
+            );
+            const longDescription = item.event_description;
+            const showButton = item.event_description.length > maxLength;
+            const showFullDescription = showFullDescriptions[index] || false;
+
             return (
-              <div className="col mt-3">
-                <div class="card">
+              <div className="col mt-3" key={item.id}>
+                <div className="card">
                   <img
-                    class="card-img-top"
+                    className="card-img-top"
                     src={item.event_image}
                     alt="Card image cap"
                   />
-                  <div class="card-body">
-                    <h5 class="card-title">{item.event_name}</h5>
+                  <div className="card-body d-flex justify-content-between">
+                    <h5 className="card-title">{item.event_name}</h5>
                     <span className="">{item.event_date}</span>
-                    <p class="card-text">{item.event_description}</p>
+                  </div>
+                  <div className="card-body">
+                    <p className="card-text">
+                      {showFullDescription ? longDescription : shortDescription}
+                      {showButton && (
+                        <button
+                          className="btn btn-link"
+                          onClick={() => toggleShowFullDescription(index)}
+                        >
+                          {showFullDescription ? "Read less" : "Read more"}
+                        </button>
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>

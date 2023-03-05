@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./eventcomp.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function EventComp() {
   const [event, setevent] = useState([]);
@@ -44,6 +45,13 @@ export default function EventComp() {
                 </div>
               );
             })}
+          </div>
+          <div class="row">
+            <div class="col">
+              <Link to="/events" class="text-dark" id="view_link">
+                View all--
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ export default function EventPageComp() {
       <div className="container">
         <div className="row mt-5">
           {event.map((item, index) => {
-            const maxLength = 200;
+            const maxLength = 150;
             const shortDescription = item.event_description.substring(
               0,
               maxLength
@@ -51,6 +51,7 @@ export default function EventPageComp() {
                     className="card-img-top"
                     src={item.event_image}
                     alt="Card image cap"
+                    height="200"
                   />
                   <div className="card-body d-flex justify-content-between">
                     <h5 className="card-title">{item.event_name}</h5>
@@ -60,12 +61,12 @@ export default function EventPageComp() {
                     <p className="card-text">
                       {showFullDescription ? longDescription : shortDescription}
                       {showButton && (
-                        <button
-                          className="btn btn-link"
+                        <a
+                          className="link-primary"
                           onClick={() => toggleShowFullDescription(index)}
                         >
                           {showFullDescription ? "Read less" : "Read more"}
-                        </button>
+                        </a>
                       )}
                     </p>
                   </div>

@@ -102,6 +102,20 @@ export default function AdminEventComp() {
                 />
               </div>
               <div className="form-group mb-2">
+                <label htmlFor="eventDate">Event Date:</label>
+                <input
+                  type="date"
+                  className="rounded py-2 form-control"
+                  id="eventDate"
+                  placeholder="Enter event date"
+                  name="event_date"
+                  value={state.event_date}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group mb-2">
                 <label htmlFor="eventLink">Event Link:</label>
                 <input
                   type="url"

@@ -37,7 +37,7 @@ const db = mysql.createPool({
 });
 
 app.get("/api/get", (req, res) => {
-  const sqlGet = "SELECT * FROM events  ORDER BY event_id DESC LIMIT 4";
+  const sqlGet = "SELECT * FROM events  ORDER BY event_id DESC LIMIT 3";
   db.query(sqlGet, (err, result) => {
     res.send(result);
   });

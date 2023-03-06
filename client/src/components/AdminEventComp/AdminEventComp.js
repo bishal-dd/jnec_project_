@@ -19,6 +19,11 @@ export default function AdminEventComp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (state.event_description.length < 150) {
+      toast.error("Event description must be at least 150 characters long.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("event_name", state.event_name);
     formData.append("event_description", state.event_description);
@@ -57,7 +62,8 @@ export default function AdminEventComp() {
   };
 
   // eslint-disable-next-line no-unused-vars
-  const { event_name, event_description, event_image, event_link } = state;
+  const { event_name, event_description, event_image, event_date, event_link } =
+    state;
 
   return (
     <div className="container">
@@ -109,7 +115,7 @@ export default function AdminEventComp() {
                   id="eventDate"
                   placeholder="Enter event date"
                   name="event_date"
-                  value={state.event_date}
+                  value={event_date}
                   onChange={handleChange}
                   required
                 />

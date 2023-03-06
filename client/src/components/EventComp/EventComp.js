@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./eventcomp.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function EventComp() {
   const [event, setevent] = useState([]);
@@ -58,6 +59,17 @@ export default function EventComp() {
                       <h5 className="card-title">{item.event_name}</h5>
                       <span className="">{item.event_date}</span>
                     </div>
+                    <div className="card-body d-flex justify-content-between">
+                      <a
+                        href={item.event_link}
+                        class="link-dark"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        More info
+                      </a>
+                    </div>
+
                     <div className="card-body">
                       <p className="card-text">
                         {showFullDescription
@@ -77,6 +89,13 @@ export default function EventComp() {
                 </div>
               );
             })}
+            <div className="row">
+              <div>
+                <Link to="/events" id="view_link" className="link-dark">
+                  View-all--
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

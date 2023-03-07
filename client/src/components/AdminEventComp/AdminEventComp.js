@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./admineventcomp.css";
+import { FaFileImage } from "react-icons/fa";
 
 export default function AdminEventComp() {
   const initialState = {
@@ -47,6 +48,15 @@ export default function AdminEventComp() {
     }
   };
 
+  const onLogout = async (e) => {
+    e.preventDefault();
+    await axios.get("http://localhost:3001/api/adminlogout").then((sess) => {
+      if (sess.data === "logout sucess") {
+        navigate("/adminlogin");
+      }
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -54,7 +64,7 @@ export default function AdminEventComp() {
       setState({ ...state, [name]: files[0] });
     } else if (name === "event_date") {
       const [year, month, day] = value.split("-"); // split the input value into year, month, and day
-      const formattedDate = `${day}/${month}/${year}`; // format the date as dd/mm/yyyy
+      const formattedDate = `${day}-${month}-${year}`; // format the date as dd/mm/yyyy
       setState({ ...state, [name]: formattedDate });
     } else {
       setState({ ...state, [name]: value });
@@ -66,17 +76,21 @@ export default function AdminEventComp() {
     state;
 
   return (
-    <div className="container">
+    <div class="container">
       <div id="event-container">
-        <div className="row justify-content-center">
-          <div className="col">
-            <h2 className="text-center p-3">Create an Event</h2>
-            <form class="rounded-4 p-5" encType="multipart/form-data">
-              <div className="form-group mb-2">
-                <label htmlFor="eventName">Event Name:</label>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <h2 class="text-center p-3">Create an Event</h2>
+            <form
+              class="rounded-4 p-5 border border-1"
+              enctype="multipart/form-data"
+              id="add_event_form"
+            >
+              <div class="form-group">
+                <label for="eventName">Event Name:</label>
                 <input
                   type="text"
-                  className="rounded py-2 form-control"
+                  class="form-control"
                   id="eventName"
                   placeholder="Enter event name"
                   name="event_name"
@@ -85,10 +99,10 @@ export default function AdminEventComp() {
                   required
                 />
               </div>
-              <div className="form-group mb-2">
-                <label htmlFor="eventDescription">Event Description:</label>
+              <div class="form-group">
+                <label for="eventDescription">Event Description:</label>
                 <textarea
-                  className="rounded py-2 form-control"
+                  class="form-control"
                   id="eventDescription"
                   rows="3"
                   placeholder="Enter event description"
@@ -97,21 +111,28 @@ export default function AdminEventComp() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="form-group mb-2">
+              <div className="form-group">
                 <label htmlFor="eventImage">Event Image:</label>
-                <input
-                  type="file"
-                  className="py-2 form-control-file"
-                  id="eventImage"
-                  name="event_image"
-                  onChange={handleChange}
-                />
+                <div className="input-group">
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    id="eventImage"
+                    name="event_image"
+                    onChange={handleChange}
+                  />
+                  <div className="input-group-append">
+                    <span className="input-group-text">
+                      <FaFileImage />
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="form-group mb-2">
-                <label htmlFor="eventDate">Event Date:</label>
+              <div class="form-group">
+                <label for="eventDate">Event Date:</label>
                 <input
                   type="date"
-                  className="rounded py-2 form-control"
+                  class="form-control"
                   id="eventDate"
                   placeholder="Enter event date"
                   name="event_date"
@@ -120,12 +141,11 @@ export default function AdminEventComp() {
                   required
                 />
               </div>
-
-              <div className="form-group mb-2">
-                <label htmlFor="eventLink">Event Link:</label>
+              <div class="form-group">
+                <label for="eventLink">Event Link:</label>
                 <input
                   type="url"
-                  className="rounded py-2 form-control"
+                  class="form-control"
                   id="eventLink"
                   placeholder="Enter event link"
                   name="event_link"
@@ -133,13 +153,20 @@ export default function AdminEventComp() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="d-grid py-2">
+              <div class="p-2 justify-content-center" id="button_div">
                 <button
                   type="submit"
-                  className="btn bg-success py-2"
+                  class="btn btn-success"
                   onClick={handleSubmit}
                 >
                   Create Event
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  onClick={onLogout}
+                  id="logout_button"
+                >
+                  Logout
                 </button>
               </div>
             </form>

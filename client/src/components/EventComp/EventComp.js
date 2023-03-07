@@ -55,9 +55,8 @@ export default function EventComp() {
                       alt="Card image cap"
                       height="200"
                     />
-                    <div className="card-body d-flex justify-content-between">
+                    <div className="card-body d-flex">
                       <h5 className="card-title">{item.event_name}</h5>
-                      <span className="">{item.event_date}</span>
                     </div>
                     <div className="card-body d-flex justify-content-between">
                       <a
@@ -68,6 +67,7 @@ export default function EventComp() {
                       >
                         More info
                       </a>
+                      <span className="">{item.event_date}</span>
                     </div>
 
                     <div className="card-body">

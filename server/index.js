@@ -125,6 +125,11 @@ app.post("/api/adminlogin", (req, res) => {
   });
 });
 
+app.get("/api/adminlogout", (req, res) => {
+  req.session.destroy();
+  res.send("logout sucess");
+});
+
 app.listen(3001, () => {
   console.log("running on port 3001");
 });

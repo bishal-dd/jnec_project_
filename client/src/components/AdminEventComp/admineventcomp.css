@@ -1,10 +1,9 @@
-#event-container {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+#add_event_form {
+  background-color: rgb(243, 243, 243);
 }
-.form-control {
-  text-align: left;
+#button_div {
+  margin-left: 200px;
+}
+#logout_button {
+  margin-left: 20px;
 }

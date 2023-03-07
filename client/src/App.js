@@ -17,7 +17,7 @@ function App() {
         <NavbarComp />
         <Routes>
           <Route path="/" element={<HomeComp />} />
-          <Route path="/adminevents" element={<AdminEventComp />} />
+          <Route path="/admineventsrfffs" element={<AdminEventComp />} />
           <Route path="adminlogin" element={<AdminLoginComp />} />
           <Route path="events" element={<EventPageComp />} />
           <Route path="/aboutus" element={<AboutusPageComp />} />

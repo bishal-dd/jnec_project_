@@ -55,8 +55,19 @@ export default function EventPageComp() {
                   />
                   <div className="card-body d-flex justify-content-between">
                     <h5 className="card-title">{item.event_name}</h5>
+                  </div>
+                  <div className="card-body d-flex justify-content-between">
+                    <a
+                      href={item.event_link}
+                      class="link-dark"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      More info
+                    </a>
                     <span className="">{item.event_date}</span>
                   </div>
+
                   <div className="card-body">
                     <p className="card-text">
                       {showFullDescription ? longDescription : shortDescription}

@@ -8,6 +8,7 @@ body {
 }
 .btn {
   background-color: #edf878;
+  color: black;
 }
 
 /* width */
@@ -31,11 +32,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #adabab;
 }
-.link{
+.link {
   padding: 10px;
   text-align: left;
 }
-.contact{
+.contact {
   padding-top: 10px;
- text-align: center;
+  text-align: center;
 }

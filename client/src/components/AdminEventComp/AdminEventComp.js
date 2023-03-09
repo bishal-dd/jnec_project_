@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./admineventcomp.css";
 import { FaFileImage } from "react-icons/fa";
 
-export default function AdminEventComp() {
+function AdminEventComp() {
   const initialState = {
     event_name: "",
     event_description: "",
@@ -176,3 +176,5 @@ export default function AdminEventComp() {
     </div>
   );
 }
+
+export default AdminEventComp;

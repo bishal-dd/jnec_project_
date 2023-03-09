@@ -8,6 +8,7 @@ import AdminEventComp from "./components/AdminEventComp/AdminEventComp";
 import AdminLoginComp from "./components/AdminLoginComp/AdminLoginComp";
 import EventPageComp from "./components/EventPageComp/EventPageComp";
 import AboutusPageComp from "./components/AboutusPageComp/AboutusPageComp";
+import ProtectedRoute from "./Route/ProtectedRoute";
 
 function App() {
   return (
@@ -16,8 +17,11 @@ function App() {
         <ToastContainer position="top-center" />
         <NavbarComp />
         <Routes>
+          <Route element={<ProtectedRoute isAuth={true} />}>
+            <Route path="/adminevents" element={<AdminEventComp />} />
+          </Route>
           <Route path="/" element={<HomeComp />} />
-          <Route path="/admineventsrfffs" element={<AdminEventComp />} />
+
           <Route path="adminlogin" element={<AdminLoginComp />} />
           <Route path="events" element={<EventPageComp />} />
           <Route path="/aboutus" element={<AboutusPageComp />} />

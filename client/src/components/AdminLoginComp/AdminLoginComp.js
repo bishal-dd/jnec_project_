@@ -21,7 +21,7 @@ export default function AdminLoginComp() {
       .then((user) => {
         console.log(user.data);
         if (user.data === "login sucess") {
-          navigate("/admineventsrfffs");
+          navigate("/adminevents");
         } else {
           toast.error("Invalid username or password");
         }

@@ -50,11 +50,17 @@ function AdminEventComp() {
 
   const onLogout = async (e) => {
     e.preventDefault();
-    await axios.get("http://localhost:3001/api/adminlogout").then((sess) => {
-      if (sess.data === "logout sucess") {
-        navigate("/adminlogin");
-      }
-    });
+
+    try {
+      await axios.get("http://localhost:3001/api/adminlogout").then((sess) => {
+        if (sess.data === "logout sucess") {
+          navigate("/adminlogin");
+        }
+      })
+    } catch (err){
+      toast.error(err)
+    }
+   
   };
 
   const handleChange = (e) => {

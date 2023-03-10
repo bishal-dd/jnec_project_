@@ -3,6 +3,7 @@ import { Carousel } from "react-bootstrap";
 import "./carouselcomp.css";
 import Admin from "../../assets/Admin block.jpeg"
 import Campus from "../../assets/JNEC campus.jpeg"
+import Building from "../../assets/building.JPG"
 
 export default function CarouselComp() {
   const images = [
@@ -15,8 +16,8 @@ export default function CarouselComp() {
       caption: "",
     },
     {
-      url: "https://img.freepik.com/free-photo/abstract-flowing-neon-wave-background_53876-101942.jpg",
-      caption: "Some Text should be put here",
+      url: Building,
+      caption: "",
     },
   ];
   return (

@@ -31,7 +31,7 @@ cloudinary.config({
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "Wweisbest1234@",
+  password: "wweisbest1234@",
   database: "jnec_project",
   insecureAuth: true,
 });

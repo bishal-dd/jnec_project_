@@ -2,6 +2,7 @@
 import React from "react";
 import "./navbarcomp.css";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png"
 
 export default function NavbarComp() {
   return (
@@ -20,7 +21,7 @@ export default function NavbarComp() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <img
-            src="https://t4.ftcdn.net/jpg/04/83/17/69/360_F_483176994_Mvj1b9H2sKpq9T1xzoJy6CreJT7leHBL.jpg"
+            src={logo}
             width="50"
             class="rounded-2"
             height="40"

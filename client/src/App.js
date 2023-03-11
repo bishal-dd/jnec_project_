@@ -10,6 +10,7 @@ import EventPageComp from "./components/EventPageComp/EventPageComp";
 import AboutusPageComp from "./components/AboutusPageComp/AboutusPageComp";
 import ProtectedRoute from "./Route/ProtectedRoute";
 import ProjectmemberComp from "./components/ProjectmemberComp/ProjectmemberComp";
+import AdddownloadComp from "./components/AdddownloadComp/AdddownloadComp";
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
             <Route path="/adminevents" element={<AdminEventComp />} />
           </Route>
           <Route path="/" element={<HomeComp />} />
-          <Route path="/projectmembers" element={<ProjectmemberComp/>} />
+          <Route path="/projectmembers" element={<ProjectmemberComp />} />
           <Route path="adminlogin" element={<AdminLoginComp />} />
           <Route path="events" element={<EventPageComp />} />
           <Route path="/aboutus" element={<AboutusPageComp />} />
+          <Route path="/adddownloads" element={<AdddownloadComp />} />
         </Routes>
       </BrowserRouter>
     </>

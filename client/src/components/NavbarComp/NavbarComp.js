@@ -61,6 +61,15 @@ export default function NavbarComp() {
                   Events
                 </Link>
               </li>
+              <li class="nav-item">
+                <Link
+                  class="nav-link active rounded-5"
+                  aria-current="page"
+                  to="/projectmembers"
+                >
+                  Project Members
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,39 @@
+.project-info {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+ 
+}
+
+.project-title {
+  font-size: 24px;
+  color: #333;
+  margin-top: 0;
+  text-align: center;
+}
+
+.project-details {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+ 
+}
+
+.project-objectives {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+ 
+
+
+}

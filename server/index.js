@@ -32,7 +32,7 @@ const db = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "wweisbest1234@",
-  database: "Law_firmDB",
+  database: "jnec_project",
   insecureAuth: true,
 });
 
@@ -108,7 +108,8 @@ app.post("/api/adminlogin", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  const sql = "SELECT * FROM superuser WHERE username= ? AND password = SHA2(?, 256)";
+  const sql =
+    "SELECT * FROM superuser WHERE username= ? AND password = SHA2(?, 256)";
   db.query(sql, [username, password], (err, result) => {
     if (err) {
       console.error(err);

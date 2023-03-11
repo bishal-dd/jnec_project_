@@ -131,6 +131,24 @@ app.get("/api/adminlogout", (req, res) => {
   res.send("logout sucess");
 });
 
+app.post("/api/upload", upload.single("file"), async (req, res) => {
+  const { file_name } = req.body;
+
+  const result = await cloudinary.uploader.upload(req.file.path);
+  const imageURL = result.secure_url;
+  console.log(imageURL);
+  const sqlInsert =
+    "INSERT INTO downloads (file_name, file_data ) VALUES (?, ?);";
+  db.query(sqlInsert, [file_name, imageURL], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      fs.unlinkSync(req.file.path);
+      res.send("file added");
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("running on port 3001");
 });

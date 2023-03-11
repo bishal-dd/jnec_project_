@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./admineventcomp.css";
 import { FaFileImage } from "react-icons/fa";
 
@@ -56,11 +56,10 @@ function AdminEventComp() {
         if (sess.data === "logout sucess") {
           navigate("/adminlogin");
         }
-      })
-    } catch (err){
-      toast.error(err)
+      });
+    } catch (err) {
+      toast.error(err);
     }
-   
   };
 
   const handleChange = (e) => {
@@ -174,6 +173,9 @@ function AdminEventComp() {
                 >
                   Logout
                 </button>
+                <Link class="btn btn-secondary" to="/adddownloads">
+                  Add Downloads
+                </Link>
               </div>
             </form>
           </div>

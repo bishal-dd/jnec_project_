@@ -3,9 +3,8 @@
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
- 
 }
 
 .project-title {
@@ -23,7 +22,6 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
- 
 }
 
 .project-objectives {
@@ -33,7 +31,4 @@
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
- 
-
-
 }

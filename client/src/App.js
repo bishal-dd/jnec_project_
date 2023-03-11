@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ToastContainer position="top-center" />
+        <ToastContainer position="top-right" />
         <NavbarComp />
         <Routes>
           <Route element={<ProtectedRoute isAuth={true} />}>

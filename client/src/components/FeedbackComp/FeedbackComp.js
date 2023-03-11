@@ -33,7 +33,17 @@ export default function FeedbackComp() {
         <div class="container-fluid p-4" id="container_for_feedback">
           <div class="row justify-content-center  gy-4">
             <div className="col">
-              Downloads
+              <h3 className="text-center">Downloads</h3>
+              <ul>
+                <li>
+                  <a
+                    href="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678540559/p9dxxswqu8bzpmwqhjru.pdf"
+                    download
+                  >
+                    Test
+                  </a>
+                </li>
+              </ul>
             </div>
             <div
               class="col-lg-5 p-5  rounded-4 h-50"

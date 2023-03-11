@@ -32,14 +32,17 @@ export default function FeedbackComp() {
       <section id="get-started" class="get-started section-bg">
         <div class="container-fluid p-4" id="container_for_feedback">
           <div class="row justify-content-center  gy-4">
+            <div className="col">
+              Downloads
+            </div>
             <div
-              class="col-lg-5 p-4 rounded-4"
+              class="col-lg-5 p-5  rounded-4 h-50"
               data-aos="fade"
               id="container_for_the_form"
             >
               <form
                 method="post"
-                class="php-email-form"
+                class="php-email-form "
                 onSubmit={handleSubmit}
               >
                 <h3>Feedback</h3>

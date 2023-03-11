@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 //import  Image  from 'react-bootstrap';
 import {
- 
   FaWhatsapp,
   FaEnvelope,
 } from "react-icons/fa";

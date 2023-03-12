@@ -84,7 +84,7 @@ export default function FeedbackComp() {
               )}
             </div>
             <div
-              class="col-lg-5 p-3  rounded-4 "
+              class="col-lg-5 p-5  rounded-4 "
               data-aos="fade"
               id="container_for_the_form"
             >
@@ -93,7 +93,7 @@ export default function FeedbackComp() {
                 class="php-email-form "
                 onSubmit={handleSubmit}
               >
-                <h3>Feedback</h3>
+                <h3 className="texr-center">Feedback</h3>
 
                 <div class="row gy-3">
                   <div class="col-md-10">

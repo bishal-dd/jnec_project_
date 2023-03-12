@@ -32,11 +32,14 @@ export default function AdminLoginComp() {
     <Container>
       <Container id="main-container" class="admin-form text-center py-5">
         <h1 class="text-center py-4">Admin Login</h1>
-        <Form class="rounded-5 p-5  text-center" onSubmit={handleLogin}>
+        <Form
+          className="rounded-5 p-5  text-center border border-3 border-dark"
+          onSubmit={handleLogin}
+        >
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
-              class="form-control"
+              class="form-control border-dark border-1"
               type="text"
               placeholder="Enter username"
               value={username}
@@ -47,7 +50,7 @@ export default function AdminLoginComp() {
           <Form.Group controlId="formPassword">
             <Form.Label class="text-center p-2">Password</Form.Label>
             <Form.Control
-              class="form-control"
+              class="form-control border-dark border-1"
               type="password"
               placeholder="Enter password"
               value={password}
@@ -55,7 +58,7 @@ export default function AdminLoginComp() {
             />
           </Form.Group>
           <div class="d-grid  py-4 ">
-            <Button variant="primary bg-success" type="submit">
+            <Button className="btn border-dark border-0" type="submit">
               Login
             </Button>
           </div>

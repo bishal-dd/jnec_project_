@@ -86,7 +86,7 @@ function AdminEventComp() {
         <div class="col-md-5">
           <h2 class="text-center p-3">Create an Event</h2>
           <form
-            class="rounded-4 p-3 border border-1"
+            class="rounded-4 p-3 border border-3 border-dark"
             enctype="multipart/form-data"
             id="add_event_form"
           >
@@ -94,7 +94,7 @@ function AdminEventComp() {
               <label for="eventName">Event Name:</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control border-dark border-1"
                 id="eventName"
                 placeholder="Enter event name"
                 name="event_name"
@@ -106,7 +106,7 @@ function AdminEventComp() {
             <div class="form-group p-3">
               <label for="eventDescription">Event Description:</label>
               <textarea
-                class="form-control"
+                class="form-control border-dark border-1"
                 id="eventDescription"
                 rows="3"
                 placeholder="Enter event description"
@@ -120,7 +120,7 @@ function AdminEventComp() {
               <div className="input-group">
                 <input
                   type="file"
-                  className="form-control-file"
+                  className="form-control-file border-dark border-1"
                   id="eventImage"
                   name="event_image"
                   onChange={handleChange}
@@ -136,7 +136,7 @@ function AdminEventComp() {
               <label for="eventDate">Event Date:</label>
               <input
                 type="date"
-                class="form-control"
+                class="form-control border-dark border-1"
                 id="eventDate"
                 placeholder="Enter event date"
                 name="event_date"
@@ -149,7 +149,7 @@ function AdminEventComp() {
               <label for="eventLink">Event Link:</label>
               <input
                 type="url"
-                class="form-control"
+                class="form-control border-dark border-1"
                 id="eventLink"
                 placeholder="Enter event link"
                 name="event_link"
@@ -160,7 +160,7 @@ function AdminEventComp() {
             <div class="p-2 text-center" id="button_div">
               <button
                 type="submit"
-                class="btn btn-success"
+                class="btn  border-dark border-0"
                 onClick={handleSubmit}
               >
                 Create Event

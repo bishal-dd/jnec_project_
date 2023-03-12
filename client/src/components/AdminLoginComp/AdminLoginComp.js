@@ -30,9 +30,9 @@ export default function AdminLoginComp() {
 
   return (
     <Container>
-      <Container id="main-container" class="admin-form text-center py-1">
-        <h1 class="text-center py-2">Admin Login</h1>
-        <Form class="rounded-5 p-5   text-center" onSubmit={handleLogin}>
+      <Container id="main-container" class="admin-form text-center py-5">
+        <h1 class="text-center py-4">Admin Login</h1>
+        <Form class="rounded-5 p-5  text-center" onSubmit={handleLogin}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control

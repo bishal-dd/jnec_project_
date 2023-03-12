@@ -6,11 +6,8 @@
 }
 #container_for_the_form {
   background-color: white;
-  max-height: 300px; /* or any other value you prefer */
+  max-height: 395px; /* or any other value you prefer */
   overflow-y: auto;
-  max-width: 500px;
-  align-items: center;
-  align-content: center;
 }
 
 #sent_feedback_button {

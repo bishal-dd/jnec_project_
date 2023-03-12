@@ -63,9 +63,9 @@ export default function FeedbackComp() {
       <section id="get-started" class="get-started section-bg">
         <div class="container-fluid p-4 h-100" id="container_for_feedback">
           <div class="row justify-content-center  gy-4">
-            <div className="col">
-              <h3 className="text-center">Downloads</h3>
-              <ul>
+            <div className="col-5" id="container_for_the_downloads">
+              <h3>Downloads</h3>
+              <ul className="mt-3">
                 {downloads.slice(0, displayedDownloads).map((item) => {
                   return (
                     <li key={item.id}>
@@ -84,18 +84,24 @@ export default function FeedbackComp() {
               </ul>
               {displayedDownloads < downloads.length ? (
                 <div>
-                  <button className="link-dark" onClick={handleSeeMore}>
+                  <button
+                    className="link-primary border border-0"
+                    onClick={handleSeeMore}
+                  >
                     See more
                   </button>
                 </div>
               ) : (
-                <button className="link-dark" onClick={handleSeeLess}>
+                <button
+                  className="link-primary border border-0"
+                  onClick={handleSeeLess}
+                >
                   See less
                 </button>
               )}
             </div>
             <div
-              class="col-lg-5 p-5  rounded-4 "
+              class="col-md-3 p-3 text-center justify-content-center  rounded-4 "
               data-aos="fade"
               id="container_for_the_form"
             >

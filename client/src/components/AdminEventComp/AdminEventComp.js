@@ -82,110 +82,108 @@ function AdminEventComp() {
 
   return (
     <div class="container">
-      <div id="event-container">
-        <div class="row justify-content-center">
-          <div class="col-md-5">
-            <h2 class="text-center p-3">Create an Event</h2>
-            <form
-              class="rounded-4 p-5 border border-1"
-              enctype="multipart/form-data"
-              id="add_event_form"
-            >
-              <div class="form-group">
-                <label for="eventName">Event Name:</label>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <h2 class="text-center p-3">Create an Event</h2>
+          <form
+            class="rounded-4 p-3 border border-1"
+            enctype="multipart/form-data"
+            id="add_event_form"
+          >
+            <div class="form-group p-3">
+              <label for="eventName">Event Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="eventName"
+                placeholder="Enter event name"
+                name="event_name"
+                value={event_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div class="form-group p-3">
+              <label for="eventDescription">Event Description:</label>
+              <textarea
+                class="form-control"
+                id="eventDescription"
+                rows="3"
+                placeholder="Enter event description"
+                name="event_description"
+                value={event_description}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group p-3">
+              <label htmlFor="eventImage">Event Image:</label>
+              <div className="input-group">
                 <input
-                  type="text"
-                  class="form-control"
-                  id="eventName"
-                  placeholder="Enter event name"
-                  name="event_name"
-                  value={event_name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="eventDescription">Event Description:</label>
-                <textarea
-                  class="form-control"
-                  id="eventDescription"
-                  rows="3"
-                  placeholder="Enter event description"
-                  name="event_description"
-                  value={event_description}
+                  type="file"
+                  className="form-control-file"
+                  id="eventImage"
+                  name="event_image"
                   onChange={handleChange}
                 />
-              </div>
-              <div className="form-group">
-                <label htmlFor="eventImage">Event Image:</label>
-                <div className="input-group">
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="eventImage"
-                    name="event_image"
-                    onChange={handleChange}
-                  />
-                  <div className="input-group-append">
-                    <span className="input-group-text">
-                      <FaFileImage />
-                    </span>
-                  </div>
+                <div className="input-group-append">
+                  <span className="input-group-text">
+                    <FaFileImage />
+                  </span>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="eventDate">Event Date:</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="eventDate"
-                  placeholder="Enter event date"
-                  name="event_date"
-                  value={event_date}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="eventLink">Event Link:</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="eventLink"
-                  placeholder="Enter event link"
-                  name="event_link"
-                  value={event_link}
-                  onChange={handleChange}
-                />
-              </div>
-              <div class="p-2 justify-content-center" id="button_div">
-                <button
-                  type="submit"
-                  class="btn btn-success"
-                  onClick={handleSubmit}
-                >
-                  Create Event
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="col-md-1 d-flex p-4">
-            <span>
+            </div>
+            <div class="form-group p-3">
+              <label for="eventDate">Event Date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="eventDate"
+                placeholder="Enter event date"
+                name="event_date"
+                value={event_date}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div class="form-group p-3">
+              <label for="eventLink">Event Link:</label>
+              <input
+                type="url"
+                class="form-control"
+                id="eventLink"
+                placeholder="Enter event link"
+                name="event_link"
+                value={event_link}
+                onChange={handleChange}
+              />
+            </div>
+            <div class="p-2 text-center" id="button_div">
               <button
-                class="btn btn-secondary pr-2"
-                onClick={onLogout}
-                id="logout_button"
+                type="submit"
+                class="btn btn-success"
+                onClick={handleSubmit}
               >
-                Logout
+                Create Event
               </button>
-            </span>
-
-            <span>
-              <Link class="btn btn-secondary pl-5" to="/adddownloads">
-                Downloads
-              </Link>
-            </span>
-          </div>
+            </div>
+          </form>
+        </div>
+        <div className="col-md-1 d-flex p-4 ">
+          <span>
+            <button
+              class="btn btn-secondary pr-2"
+              onClick={onLogout}
+              id="logout_button"
+            >
+              Logout
+            </button>
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span>
+            <Link class="btn btn-secondary pl-5" to="/adddownloads">
+              Downloads
+            </Link>
+          </span>
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/jsx-no-comment-textnodes */
+import React, { useState, useEffect } from "react";
 import "./feedbackcomp.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,6 +10,31 @@ export default function FeedbackComp() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [downloads, setDownloads] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/download").then((response) => {
+      console.log(response.data);
+      setDownloads(response.data);
+    });
+  }, []);
+
+  const handleDownload = (downloadUrl, filename) => {
+    console.log("Download URL:", downloadUrl);
+    axios({
+      url: downloadUrl,
+      method: "GET",
+      responseType: "blob",
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", filename + ".pdf");
+      document.body.appendChild(link);
+      link.click();
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,14 +62,20 @@ export default function FeedbackComp() {
             <div className="col">
               <h3 className="text-center">Downloads</h3>
               <ul>
-                <li>
-                  <a
-                    href="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678540559/p9dxxswqu8bzpmwqhjru.pdf"
-                    download
-                  >
-                    Test
-                  </a>
-                </li>
+                {downloads.map((item) => {
+                  return (
+                    <li key={item.id}>
+                      <button
+                        className="link border border-0"
+                        onClick={() =>
+                          handleDownload(item.file_data, item.file_name)
+                        }
+                      >
+                        {item.file_name}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div

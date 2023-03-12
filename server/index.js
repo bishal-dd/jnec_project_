@@ -156,7 +156,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 });
 
 app.get("/api/download", (req, res) => {
-  const sqlGet = "SELECT * FROM downloads";
+  const sqlGet = "SELECT * FROM downloads ORDER BY id DESC";
   db.query(sqlGet, (err, result) => {
     if (err) {
       console.log(err);

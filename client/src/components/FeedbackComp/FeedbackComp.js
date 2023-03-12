@@ -55,7 +55,9 @@ export default function FeedbackComp() {
   const handleSeeMore = () => {
     setDisplayedDownloads(displayedDownloads + 5);
   };
-
+  const handleSeeLess = () => {
+    setDisplayedDownloads(displayedDownloads - 5);
+  };
   return (
     <>
       <section id="get-started" class="get-started section-bg">
@@ -80,8 +82,16 @@ export default function FeedbackComp() {
                   );
                 })}
               </ul>
-              {displayedDownloads < downloads.length && (
-                <button onClick={handleSeeMore}>See more</button>
+              {displayedDownloads < downloads.length ? (
+                <div>
+                  <button className="link-dark" onClick={handleSeeMore}>
+                    See more
+                  </button>
+                </div>
+              ) : (
+                <button className="link-dark" onClick={handleSeeLess}>
+                  See less
+                </button>
               )}
             </div>
             <div

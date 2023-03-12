@@ -34,7 +34,7 @@ export default function EventComp() {
   };
   return (
     <>
-      <div id="event-page" class="py-5">
+      <div id="event-page" class="py-3">
         <div class="container">
           <div className="row ">
             {event.map((item, index) => {
@@ -49,7 +49,7 @@ export default function EventComp() {
 
               return (
                 <div className="col mt-3" key={item.id}>
-                  <div className="card">
+                  <div className="card rounded-4">
                     <img
                       className="card-img-top"
                       src={item.event_image}

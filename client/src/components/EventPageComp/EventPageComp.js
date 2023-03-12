@@ -46,7 +46,7 @@ export default function EventPageComp() {
 
             return (
               <div className="col mt-3" key={item.id}>
-                <div className="card">
+                <div className="card rounded-4">
                   <img
                     className="card-img-top"
                     src={item.event_image}

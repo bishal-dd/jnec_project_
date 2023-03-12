@@ -84,7 +84,7 @@ function AdminEventComp() {
     <div class="container">
       <div id="event-container">
         <div class="row justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-5">
             <h2 class="text-center p-3">Create an Event</h2>
             <form
               class="rounded-4 p-5 border border-1"
@@ -166,18 +166,25 @@ function AdminEventComp() {
                 >
                   Create Event
                 </button>
-                <button
-                  class="btn btn-secondary"
-                  onClick={onLogout}
-                  id="logout_button"
-                >
-                  Logout
-                </button>
-                <Link class="btn btn-secondary" to="/adddownloads">
-                  Add Downloads
-                </Link>
               </div>
             </form>
+          </div>
+          <div className="col-md-1 d-flex p-4">
+            <span>
+              <button
+                class="btn btn-secondary pr-2"
+                onClick={onLogout}
+                id="logout_button"
+              >
+                Logout
+              </button>
+            </span>
+
+            <span>
+              <Link class="btn btn-secondary pl-5" to="/adddownloads">
+                Downloads
+              </Link>
+            </span>
           </div>
         </div>
       </div>

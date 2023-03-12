@@ -57,14 +57,18 @@ export default function EventPageComp() {
                     <h5 className="card-title">{item.event_name}</h5>
                   </div>
                   <div className="card-body d-flex justify-content-between">
-                    <a
-                      href={item.event_link}
-                      class="link-dark"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      More info
-                    </a>
+                    {item.event_link !== "" ? (
+                      <a
+                        href={item.event_link}
+                        class="link-dark text-decoration-none"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        More info
+                      </a>
+                    ) : (
+                      ""
+                    )}
                     <span className="">{item.event_date}</span>
                   </div>
 

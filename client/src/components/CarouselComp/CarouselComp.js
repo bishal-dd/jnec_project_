@@ -13,7 +13,7 @@ export default function CarouselComp() {
       caption: "",
     },
     {
-      url: "https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678462218/q1nwudn4i53wydglbszz.jpg",
+      url: "https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678646008/x4nrsge28pzrceclgixi.jpg",
       caption: "",
     },
   ];

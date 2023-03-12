@@ -36,7 +36,10 @@ export default function AdddownloadComp() {
 
   return (
     <div className="d-flex justify-content-center mt-5">
-      <Form onSubmit={handleSubmit} style={{ maxWidth: "400px" }}>
+      <Form
+        onSubmit={handleSubmit}
+        className="p-5 rounded-5 border border-3 border-dark"
+      >
         <Form.Group controlId="formFileName">
           <Form.Label>File Name</Form.Label>
           <Form.Control
@@ -50,8 +53,9 @@ export default function AdddownloadComp() {
           <Form.Label>Choose File</Form.Label>
           <Form.Control type="file" onChange={handleFileUpload} />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+
+        <Button variant="primary" className=" border-0 mt-3" type="submit">
+          ADD
         </Button>
       </Form>
     </div>

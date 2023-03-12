@@ -14,5 +14,8 @@ a {
 }
 #logo_image {
   right: 0px;
-  background-color: #010902;
+  background-color: white;
+}
+.nav-link {
+  font-weight: bold;
 }

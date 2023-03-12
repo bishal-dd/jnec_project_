@@ -55,7 +55,7 @@ export default function FeedbackComp() {
   return (
     <>
       <section id="get-started" class="get-started section-bg">
-        <div class="container-fluid p-4" id="container_for_feedback">
+        <div class="container-fluid p-4 h-100" id="container_for_feedback">
           <div class="row justify-content-center  gy-4">
             <div className="col">
               <h3 className="text-center">Downloads</h3>
@@ -77,7 +77,7 @@ export default function FeedbackComp() {
               </ul>
             </div>
             <div
-              class="col-lg-5 p-5  rounded-4 h-50"
+              class="col-lg-5 p-3  rounded-4 "
               data-aos="fade"
               id="container_for_the_form"
             >
@@ -87,12 +87,9 @@ export default function FeedbackComp() {
                 onSubmit={handleSubmit}
               >
                 <h3>Feedback</h3>
-                <p>
-                  Vel nobis odio laboriosam et hic voluptatem. Inventore vitae
-                  totam. Rerum repellendus enim linead sero park flows.
-                </p>
+
                 <div class="row gy-3">
-                  <div class="col-md-12">
+                  <div class="col-md-10">
                     <input
                       type="text"
                       name="name"
@@ -104,7 +101,7 @@ export default function FeedbackComp() {
                     />
                   </div>
 
-                  <div class="col-md-12 ">
+                  <div class="col-md-10 ">
                     <input
                       type="email"
                       class="form-control"
@@ -116,7 +113,7 @@ export default function FeedbackComp() {
                     />
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-10">
                     <input
                       type="text"
                       class="form-control"
@@ -128,11 +125,11 @@ export default function FeedbackComp() {
                     />
                   </div>
 
-                  <div class="col-md-12">
+                  <div class="col-md-10 justify-content-center">
                     <textarea
                       class="form-control"
                       name="message"
-                      rows="6"
+                      rows="2"
                       placeholder="Message"
                       required
                       value={message}
@@ -140,7 +137,7 @@ export default function FeedbackComp() {
                     ></textarea>
                   </div>
 
-                  <div class="col-md-12 text-center">
+                  <div class="col-md-10 text-center">
                     <button type="submit" class="btn" id="sent_feedback_button">
                       Sent
                     </button>

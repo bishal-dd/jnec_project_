@@ -72,6 +72,7 @@ export default function FeedbackComp() {
                         onClick={() =>
                           handleDownload(item.file_data, item.file_name)
                         }
+                        id="download_list"
                       >
                         {item.file_name}
                       </button>

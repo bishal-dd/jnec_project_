@@ -135,17 +135,48 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
   const { file_name } = req.body;
 
   const result = await cloudinary.uploader.upload(req.file.path);
-  const imageURL = result.secure_url;
-  console.log(imageURL);
+  const downloadUrl = cloudinary.url(result.public_id, {
+    format: "pdf",
+    width: 800,
+    height: 600,
+    secure: true,
+  });
+  console.log(downloadUrl);
+
   const sqlInsert =
-    "INSERT INTO downloads (file_name, file_data ) VALUES (?, ?);";
-  db.query(sqlInsert, [file_name, imageURL], (err, result) => {
+    "INSERT INTO downloads (file_name,file_data ) VALUES (?, ?);";
+  db.query(sqlInsert, [file_name, downloadUrl], (err, result) => {
     if (err) {
       console.log(err);
     } else {
       fs.unlinkSync(req.file.path);
       res.send("file added");
     }
+  });
+});
+
+app.get("/api/download", (req, res) => {
+  const sqlGet = "SELECT * FROM downloads";
+  db.query(sqlGet, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
+    }
+
+    const fileDataArray = result.map((row) => {
+      return {
+        file_name: row.file_name,
+        file_data: row.file_data,
+      };
+    });
+
+    // Set the appropriate headers for the PDF file
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=download.pdf");
+
+    // Send the file data array as the response
+    res.send(fileDataArray);
   });
 });
 

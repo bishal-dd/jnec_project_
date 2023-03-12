@@ -8,7 +8,7 @@ export default function FeedbackComp() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [displayedDownloads, setDisplayedDownloads] = useState(5);
   const [downloads, setDownloads] = useState([]);
 
   useEffect(() => {
@@ -52,6 +52,10 @@ export default function FeedbackComp() {
         toast.error("Error submitting feedback");
       });
   };
+  const handleSeeMore = () => {
+    setDisplayedDownloads(displayedDownloads + 5);
+  };
+
   return (
     <>
       <section id="get-started" class="get-started section-bg">
@@ -60,7 +64,7 @@ export default function FeedbackComp() {
             <div className="col">
               <h3 className="text-center">Downloads</h3>
               <ul>
-                {downloads.map((item) => {
+                {downloads.slice(0, displayedDownloads).map((item) => {
                   return (
                     <li key={item.id}>
                       <button
@@ -75,6 +79,9 @@ export default function FeedbackComp() {
                   );
                 })}
               </ul>
+              {displayedDownloads < downloads.length && (
+                <button onClick={handleSeeMore}>See more</button>
+              )}
             </div>
             <div
               class="col-lg-5 p-3  rounded-4 "

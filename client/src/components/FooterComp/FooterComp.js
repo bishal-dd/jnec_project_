@@ -2,10 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //import  Image  from 'react-bootstrap';
-import {
-  FaWhatsapp,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import "./footercomp.css";
 
 export default function FooterComp() {
@@ -13,7 +10,7 @@ export default function FooterComp() {
     <footer id="main-footer" class="bg-dark">
       <div class="container">
         <div class="row ">
-          <div class="col-md-6 mx-auto">
+          <div class="col-md-3 mx-auto">
             <ul class="list-unstyled">
               Contact Details<br></br>
               <li class="link">

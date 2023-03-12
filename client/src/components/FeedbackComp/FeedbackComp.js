@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState, useEffect } from "react";
 import "./feedbackcomp.css";
 import axios from "axios";
@@ -66,7 +64,7 @@ export default function FeedbackComp() {
                   return (
                     <li key={item.id}>
                       <button
-                        className="link border border-0"
+                        className="link-dark border border-0"
                         onClick={() =>
                           handleDownload(item.file_data, item.file_name)
                         }

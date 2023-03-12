@@ -1,22 +1,19 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import "./carouselcomp.css";
-import Admin from "../../assets/Admin block.jpeg"
-import Campus from "../../assets/JNEC campus.jpeg"
-import Building from "../../assets/building.JPG"
 
 export default function CarouselComp() {
   const images = [
     {
-      url: Admin,
-      caption: ""
-    },
-    {
-      url: Campus,
+      url: "https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678528593/civ8omb3lzuegnsfanjc.jpg",
       caption: "",
     },
     {
-      url: Building,
+      url: "https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678528548/dif4hj25lduvfo3z1mfw.jpg",
+      caption: "",
+    },
+    {
+      url: "https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678462218/q1nwudn4i53wydglbszz.jpg",
       caption: "",
     },
   ];

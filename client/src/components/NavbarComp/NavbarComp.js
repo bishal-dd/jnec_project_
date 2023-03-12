@@ -20,7 +20,7 @@ export default function NavbarComp() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <img
-            src=""
+            src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678645849/u5ffbzghsirppkrzughq.png"
             width="50"
             class="rounded-2"
             height="40"

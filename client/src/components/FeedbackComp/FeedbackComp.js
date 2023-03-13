@@ -13,7 +13,6 @@ export default function FeedbackComp() {
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/download").then((response) => {
-      console.log(response.data);
       setDownloads(response.data);
     });
   }, []);

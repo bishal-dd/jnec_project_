@@ -6,7 +6,7 @@
 }
 #container_for_the_form {
   background-color: white;
-  max-height: 395px; /* or any other value you prefer */
+  max-height: 400px; /* or any other value you prefer */
   overflow-y: auto;
 }
 

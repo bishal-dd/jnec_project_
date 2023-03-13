@@ -180,6 +180,12 @@ app.get("/api/download", (req, res) => {
   });
 });
 
+app.get("/api/getLoggedInStatus", (req, res) => {
+  const isLoggedIn = !!req.session.username;
+
+  res.send(isLoggedIn);
+});
+
 app.listen(3001, () => {
   console.log("running on port 3001");
 });

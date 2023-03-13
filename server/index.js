@@ -9,6 +9,7 @@ const session = require("express-session");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
+const sharp = require("sharp");
 
 app.use(cors());
 app.use(express.json());
@@ -37,9 +38,27 @@ const db = mysql.createPool({
 });
 
 app.get("/api/get", (req, res) => {
-  const sqlGet = "SELECT * FROM events  ORDER BY event_id DESC LIMIT 3";
+  const sqlGet = "SELECT * FROM events ORDER BY event_id DESC LIMIT 3";
   db.query(sqlGet, (err, result) => {
-    res.send(result);
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error retrieving events from database");
+    } else {
+      const eventsWithImages = result.map((event) => {
+        const imageBuffer = event.event_image;
+        console.log(imageBuffer);
+        const image = sharp(imageBuffer);
+        const metadata = image.metadata();
+        if (metadata.format === undefined) {
+          console.log("Invalid image format");
+        } else {
+          const imageBase64 = Buffer.from(imageBuffer).toString("base64");
+          event.event_image = `data:${metadata.format};base64,${imageBase64}`;
+        }
+        return event;
+      });
+      res.send(eventsWithImages);
+    }
   });
 });
 
@@ -84,15 +103,13 @@ const upload = multer({ dest: "temp/" });
 app.post("/api/post", upload.single("event_image"), async (req, res) => {
   const { event_name, event_description, event_date, event_link } = req.body;
 
-  const result = await cloudinary.uploader.upload(req.file.path);
-  const imageURL = result.secure_url;
-  console.log(imageURL);
-  console.log(event_date);
+  const image = fs.readFileSync(req.file.path);
+
   const sqlInsert =
     "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
   db.query(
     sqlInsert,
-    [event_name, event_description, imageURL, event_date, event_link],
+    [event_name, event_description, image, event_date, event_link],
     (err, result) => {
       if (err) {
         console.log(err);

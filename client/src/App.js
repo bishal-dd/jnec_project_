@@ -15,19 +15,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [loggedin, setLoggedin] = useState([]);
+  // const [loggedin, setLoggedin] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/getLoggedInStatus")
-      .then((response) => {
-        console.log(response.data);
-        setLoggedin(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3001/api/getLoggedInStatus")
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setLoggedin(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <>

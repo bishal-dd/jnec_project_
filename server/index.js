@@ -44,20 +44,26 @@ app.get("/api/get", (req, res) => {
       console.log(err);
       res.status(500).send("Error retrieving events from database");
     } else {
-      const eventsWithImages = result.map((event) => {
+      const eventsWithImages = result.map(async (event) => {
         const imageBuffer = event.event_image;
-        console.log(imageBuffer);
         const image = sharp(imageBuffer);
-        const metadata = image.metadata();
+        const metadata = await image.metadata();
         if (metadata.format === undefined) {
           console.log("Invalid image format");
         } else {
-          const imageBase64 = Buffer.from(imageBuffer).toString("base64");
-          event.event_image = `data:${metadata.format};base64,${imageBase64}`;
+          const imageUrl = URL.createObjectURL(new Blob([imageBuffer]));
+          event.event_image = imageUrl;
         }
         return event;
       });
-      res.send(eventsWithImages);
+      Promise.all(eventsWithImages)
+        .then((results) => {
+          res.send(results);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send("Error processing images");
+        });
     }
   });
 });
@@ -98,12 +104,17 @@ app.post("/api/feedback", (req, res) => {
   });
 });
 
-const upload = multer({ dest: "temp/" });
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 app.post("/api/post", upload.single("event_image"), async (req, res) => {
   const { event_name, event_description, event_date, event_link } = req.body;
 
-  const image = fs.readFileSync(req.file.path);
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+
+  const image = req.file.buffer;
 
   const sqlInsert =
     "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
@@ -113,8 +124,8 @@ app.post("/api/post", upload.single("event_image"), async (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
+        res.status(500).send("Error adding event to database");
       } else {
-        fs.unlinkSync(req.file.path);
         res.send("event added");
       }
     }

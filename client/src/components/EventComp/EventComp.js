@@ -46,16 +46,13 @@ export default function EventComp() {
               const longDescription = item.event_description;
               const showButton = item.event_description.length > maxLength;
               const showFullDescription = showFullDescriptions[index] || false;
-              const imageUrl = URL.createObjectURL(
-                new Blob([item.event_image])
-              );
-              console.log(imageUrl);
+
               return (
                 <div className="col mt-3" key={item.id}>
                   <div className="card rounded-4">
                     <img
                       className="card-img-top"
-                      src={imageUrl}
+                      src={item.event_image}
                       alt="Card image cap"
                       height="200"
                     />

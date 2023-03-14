@@ -19,26 +19,28 @@ export default function FeedbackComp() {
 
   const handleDownload = (fileName) => {
     axios({
-      url: `http://localhost:3001/api/download?fileName=${fileName}`,
+      url: `http://localhost:3001/api/downloadfile/${fileName}`,
       method: "GET",
       responseType: "blob",
-    }).then((response) => {
-      // Create a URL for the file data
-      const fileUrl = URL.createObjectURL(new Blob([response.data]));
-
-      // Create a download link
-      const link = document.createElement("a");
-      link.href = fileUrl;
-      link.setAttribute("download", fileName);
-      link.innerHTML = "Download";
-
-      // Add the link to the document and click it to trigger the download
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up the temporary URL
-      URL.revokeObjectURL(fileUrl);
-    });
+    })
+      .then((response) => {
+        console.log(response.data);
+        const fileData = new Blob([response.data], {
+          type: "application/pdf",
+        });
+        console.log(fileData);
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(fileData);
+        link.setAttribute("download", fileName);
+        document.body.appendChild(link);
+        link.click();
+        URL.revokeObjectURL(link.href);
+        document.body.removeChild(link);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Error downloading file");
+      });
   };
 
   const handleSubmit = (e) => {
@@ -74,7 +76,7 @@ export default function FeedbackComp() {
               <h3>Downloads</h3>
               <ul className="mt-3">
                 {downloads.slice(0, displayedDownloads).map((item) => {
-                  console.log(item.file_data);
+                  console.log(item.fileName);
                   return (
                     <li key={item.id}>
                       <button

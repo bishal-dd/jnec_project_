@@ -187,8 +187,8 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     }
 
     const { file_name } = req.body;
-    if (!req.file) {
-      throw new Error("No file uploaded");
+    if (!file_name) {
+      throw new Error("No file name provided");
     }
 
     const fileData = req.file.buffer;
@@ -198,8 +198,9 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     db.query(sqlInsert, [file_name, fileData], (err, result) => {
       if (err) {
         console.log(err);
+        res.status(500).send(err.message);
       } else {
-        res.send("file added");
+        res.send("File added");
       }
     });
   } catch (err) {
@@ -208,21 +209,41 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-app.get("/api/download", (req, res) => {
+app.get("/api/download/", (req, res) => {
   const sqlGet = "SELECT * FROM downloads ORDER BY id DESC";
   db.query(sqlGet, (err, result) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
       return;
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/api/downloadfile/:file_name", (req, res) => {
+  const sqlGet = "SELECT * FROM downloads WHERE file_name = ?";
+  const file_name = req.params.file_name;
+
+  db.query(sqlGet, [file_name], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
     }
 
-    const fileData = result[0].file_data;
+    if (result.length === 0) {
+      res.sendStatus(404);
+      return;
+    }
+
+    const fileData = Buffer.from(result[0].file_data, "binary");
     const fileName = result[0].file_name;
 
     res.set({
+      "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename=${fileName}`,
-      "Content-Type": "application/octet-stream",
       "Content-Length": fileData.length,
     });
 

@@ -10,6 +10,8 @@ const path = require("path");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const sharp = require("sharp");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(express.json());
@@ -130,15 +132,8 @@ app.post("/api/feedback", (req, res) => {
   });
 });
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
 app.post("/api/post", upload.single("event_image"), async (req, res) => {
   const { event_name, event_description, event_date, event_link } = req.body;
-
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
-  }
 
   const image = req.file.buffer;
 
@@ -187,12 +182,16 @@ app.get("/api/adminlogout", (req, res) => {
 
 app.post("/api/upload", upload.single("file"), async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).send("No file uploaded.");
+    }
+
     const { file_name } = req.body;
     if (!req.file) {
       throw new Error("No file uploaded");
     }
 
-    const fileData = fs.readFileSync(req.file.path);
+    const fileData = req.file.buffer;
     console.log(fileData);
     const sqlInsert =
       "INSERT INTO downloads (file_name, file_data) VALUES (?, ?)";
@@ -200,7 +199,6 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        fs.unlinkSync(req.file.path);
         res.send("file added");
       }
     });
@@ -219,19 +217,16 @@ app.get("/api/download", (req, res) => {
       return;
     }
 
-    const fileDataArray = result.map((row) => {
-      return {
-        file_name: row.file_name,
-        file_data: row.file_data,
-      };
+    const fileData = result[0].file_data;
+    const fileName = result[0].file_name;
+
+    res.set({
+      "Content-Disposition": `attachment; filename=${fileName}`,
+      "Content-Type": "application/octet-stream",
+      "Content-Length": fileData.length,
     });
 
-    // Set the appropriate headers for the PDF file
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", "attachment; filename=download.pdf");
-
-    // Send the file data array as the response
-    res.send(fileDataArray);
+    res.send(fileData);
   });
 });
 

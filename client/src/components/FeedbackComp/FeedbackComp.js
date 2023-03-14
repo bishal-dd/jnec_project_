@@ -17,9 +17,9 @@ export default function FeedbackComp() {
     });
   }, []);
 
-  const handleDownload = (downloadUrl, filename) => {
+  const handleDownload = (fileName) => {
     axios({
-      url: downloadUrl,
+      url: `http://localhost:3001/api/download?fileName=${fileName}`,
       method: "GET",
       responseType: "blob",
     }).then((response) => {
@@ -29,7 +29,7 @@ export default function FeedbackComp() {
       // Create a download link
       const link = document.createElement("a");
       link.href = fileUrl;
-      link.setAttribute("download", filename + ".pdf");
+      link.setAttribute("download", fileName);
       link.innerHTML = "Download";
 
       // Add the link to the document and click it to trigger the download
@@ -74,13 +74,12 @@ export default function FeedbackComp() {
               <h3>Downloads</h3>
               <ul className="mt-3">
                 {downloads.slice(0, displayedDownloads).map((item) => {
+                  console.log(item.file_data);
                   return (
                     <li key={item.id}>
                       <button
                         className="link-dark border border-0"
-                        onClick={() =>
-                          handleDownload(item.file_data, item.file_name)
-                        }
+                        onClick={() => handleDownload(item.file_name)}
                         id="download_list"
                       >
                         {item.file_name}

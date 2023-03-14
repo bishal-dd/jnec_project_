@@ -51,11 +51,12 @@ app.get("/api/get", (req, res) => {
         if (metadata.format === undefined) {
           console.log("Invalid image format");
         } else {
-          const imageUrl = URL.createObjectURL(new Blob([imageBuffer]));
-          event.event_image = imageUrl;
+          const imageData = Buffer.from(imageBuffer).toString("base64");
+          event.event_image = `data:image/${metadata.format};base64,${imageData}`;
         }
         return event;
       });
+
       Promise.all(eventsWithImages)
         .then((results) => {
           res.send(results);
@@ -69,9 +70,34 @@ app.get("/api/get", (req, res) => {
 });
 
 app.get("/api/getall", (req, res) => {
-  const sqlGet = "SELECT * FROM events  ORDER BY event_id DESC";
+  const sqlGet = "SELECT * FROM events ORDER BY event_id DESC";
   db.query(sqlGet, (err, result) => {
-    res.send(result);
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error retrieving events from database");
+    } else {
+      const eventsWithImages = result.map(async (event) => {
+        const imageBuffer = event.event_image;
+        const image = sharp(imageBuffer);
+        const metadata = await image.metadata();
+        if (metadata.format === undefined) {
+          console.log("Invalid image format");
+        } else {
+          const imageData = Buffer.from(imageBuffer).toString("base64");
+          event.event_image = `data:image/${metadata.format};base64,${imageData}`;
+        }
+        return event;
+      });
+
+      Promise.all(eventsWithImages)
+        .then((results) => {
+          res.send(results);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send("Error processing images");
+        });
+    }
   });
 });
 
@@ -160,27 +186,28 @@ app.get("/api/adminlogout", (req, res) => {
 });
 
 app.post("/api/upload", upload.single("file"), async (req, res) => {
-  const { file_name } = req.body;
-
-  const result = await cloudinary.uploader.upload(req.file.path);
-  const downloadUrl = cloudinary.url(result.public_id, {
-    format: "pdf",
-    width: 800,
-    height: 600,
-    secure: true,
-  });
-  console.log(downloadUrl);
-
-  const sqlInsert =
-    "INSERT INTO downloads (file_name,file_data ) VALUES (?, ?);";
-  db.query(sqlInsert, [file_name, downloadUrl], (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      fs.unlinkSync(req.file.path);
-      res.send("file added");
+  try {
+    const { file_name } = req.body;
+    if (!req.file) {
+      throw new Error("No file uploaded");
     }
-  });
+
+    const fileData = fs.readFileSync(req.file.path);
+    console.log(fileData);
+    const sqlInsert =
+      "INSERT INTO downloads (file_name, file_data) VALUES (?, ?)";
+    db.query(sqlInsert, [file_name, fileData], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        fs.unlinkSync(req.file.path);
+        res.send("file added");
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err.message);
+  }
 });
 
 app.get("/api/download", (req, res) => {

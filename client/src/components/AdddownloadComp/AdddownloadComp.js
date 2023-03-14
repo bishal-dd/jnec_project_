@@ -18,6 +18,7 @@ export default function AdddownloadComp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(file);
     const formData = new FormData();
     formData.append("file", file);
     formData.append("file_name", file_name);
@@ -51,7 +52,7 @@ export default function AdddownloadComp() {
         </Form.Group>
         <Form.Group controlId="formFile">
           <Form.Label>Choose File</Form.Label>
-          <Form.Control type="file" onChange={handleFileUpload} />
+          <Form.Control type="file" name="file" onChange={handleFileUpload} />
         </Form.Group>
 
         <Button variant="primary" className=" border-0 mt-3" type="submit">

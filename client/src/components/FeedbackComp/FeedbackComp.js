@@ -18,18 +18,26 @@ export default function FeedbackComp() {
   }, []);
 
   const handleDownload = (downloadUrl, filename) => {
-    console.log("Download URL:", downloadUrl);
     axios({
       url: downloadUrl,
       method: "GET",
       responseType: "blob",
     }).then((response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      // Create a URL for the file data
+      const fileUrl = URL.createObjectURL(new Blob([response.data]));
+
+      // Create a download link
       const link = document.createElement("a");
-      link.href = url;
+      link.href = fileUrl;
       link.setAttribute("download", filename + ".pdf");
+      link.innerHTML = "Download";
+
+      // Add the link to the document and click it to trigger the download
       document.body.appendChild(link);
       link.click();
+
+      // Clean up the temporary URL
+      URL.revokeObjectURL(fileUrl);
     });
   };
 

@@ -182,7 +182,6 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     }
 
     const fileData = req.file.buffer;
-    console.log(fileData);
     const sqlInsert =
       "INSERT INTO downloads (file_name, file_data) VALUES (?, ?)";
     db.query(sqlInsert, [file_name, fileData], (err, result) => {
@@ -245,6 +244,48 @@ app.get("/api/getLoggedInStatus", (req, res) => {
   const isLoggedIn = !!req.session.username;
 
   res.send(isLoggedIn);
+});
+
+app.get("/api/delete/:id", (req, res) => {
+  const sqlDelete = "DELETE FROM events WHERE event_id = ?;";
+
+  db.query(sqlDelete, [req.params.id], (err, result) => {
+    res.send("Event Deleted");
+  });
+});
+
+app.post("/api/edit/:id", upload.single("event_image"), async (req, res) => {
+  const { event_name, event_description, event_date, event_link } = req.body;
+  const id = [req.params.id];
+
+  let image = req.file ? req.file.buffer : null;
+  const imageSize = image ? image.length : 0;
+
+  if (imageSize > MAX_IMAGE_SIZE) {
+    console.log("Image size exceeds the limit of 10 MB");
+    res.status(400).send("Image size exceeds the limit of 10 MB");
+    return;
+  }
+
+  // Use a default image if no image was uploaded
+  if (!image) {
+    const defaultImagePath = path.join(__dirname, "assets", "default.jpg");
+    image = await fs.promises.readFile(defaultImagePath);
+  }
+  const sqlInsert =
+    "UPDATE events SET event_name = ?, event_description = ?, event_image = ?, event_date = ?, event_link = ? WHERE event_id = ?";
+  db.query(
+    sqlInsert,
+    [event_name, event_description, image, event_date, event_link, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error adding event to database");
+      } else {
+        res.send("event edited");
+      }
+    }
+  );
 });
 
 app.listen(3001, () => {

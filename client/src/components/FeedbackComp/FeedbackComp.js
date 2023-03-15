@@ -62,52 +62,55 @@ export default function FeedbackComp() {
       });
   };
   const handleSeeMore = () => {
-    setDisplayedDownloads(displayedDownloads + 5);
+    setDisplayedDownloads(displayedDownloads + downloads.length);
   };
   const handleSeeLess = () => {
-    setDisplayedDownloads(displayedDownloads - 5);
+    setDisplayedDownloads(displayedDownloads - downloads.length);
   };
   return (
     <>
       <section id="get-started" class="get-started section-bg">
         <div class="container-fluid p-4 h-100" id="container_for_feedback">
-          <div class="row justify-content-center  gy-4">
+          <div class="row justify-content-center p-5 gy-4">
             <div className="col-5" id="container_for_the_downloads">
-              <h3>Downloads</h3>
-              <ul className="mt-3">
-                {downloads.slice(0, displayedDownloads).map((item) => {
-                  console.log(item.fileName);
-                  return (
-                    <li key={item.id}>
-                      <button
-                        className="link-dark border border-0"
-                        onClick={() => handleDownload(item.file_name)}
-                        id="download_list"
-                      >
-                        {item.file_name}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-              {displayedDownloads < downloads.length ? (
-                <div>
+              <div className="col-md-9 rounded-4" id="div_for_downloads">
+                <h3 className=" text-center">Downloads</h3>
+                <ul className="mt-3">
+                  {downloads.slice(0, displayedDownloads).map((item) => {
+                    console.log(item.fileName);
+                    return (
+                      <li key={item.id}>
+                        <button
+                          className="link-dark border border-0"
+                          onClick={() => handleDownload(item.file_name)}
+                          id="download_list"
+                        >
+                          {item.file_name}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {displayedDownloads < downloads.length ? (
+                  <div>
+                    <button
+                      className="link-primary border border-0"
+                      onClick={handleSeeMore}
+                    >
+                      See more
+                    </button>
+                  </div>
+                ) : (
                   <button
                     className="link-primary border border-0"
-                    onClick={handleSeeMore}
+                    onClick={handleSeeLess}
                   >
-                    See more
+                    See less
                   </button>
-                </div>
-              ) : (
-                <button
-                  className="link-primary border border-0"
-                  onClick={handleSeeLess}
-                >
-                  See less
-                </button>
-              )}
+                )}
+              </div>
             </div>
+
             <div
               class="col-md-3 p-3 text-center justify-content-center  rounded-4 "
               data-aos="fade"

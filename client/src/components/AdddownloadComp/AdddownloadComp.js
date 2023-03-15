@@ -25,10 +25,15 @@ export default function AdddownloadComp() {
     try {
       const res = await axios.post(
         "http://localhost:3001/api/upload",
+
         formData
       );
-      if (res.data === "file added") {
+      console.log(res.data);
+
+      if (res.data === "File added") {
         toast.success("File added");
+      } else if (res.data === "File size exceeds the limit of 10 MB") {
+        toast.error("File size exceeds the limit of 10 MB");
       }
     } catch (error) {
       console.log(error);

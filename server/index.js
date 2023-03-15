@@ -132,10 +132,25 @@ app.post("/api/feedback", (req, res) => {
   });
 });
 
+const MAX_IMAGE_SIZE = 10000000; // 10 MB in bytes
+
 app.post("/api/post", upload.single("event_image"), async (req, res) => {
   const { event_name, event_description, event_date, event_link } = req.body;
 
-  const image = req.file.buffer;
+  let image = req.file ? req.file.buffer : null;
+  const imageSize = image ? image.length : 0;
+
+  if (imageSize > MAX_IMAGE_SIZE) {
+    console.log("Image size exceeds the limit of 10 MB");
+    res.status(400).send("Image size exceeds the limit of 10 MB");
+    return;
+  }
+
+  // Use a default image if no image was uploaded
+  if (!image) {
+    const defaultImagePath = path.join(__dirname, "assets", "default.jpg");
+    image = await fs.promises.readFile(defaultImagePath);
+  }
 
   const sqlInsert =
     "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
@@ -180,10 +195,17 @@ app.get("/api/adminlogout", (req, res) => {
   res.send("logout sucess");
 });
 
+const MAX_FILE_SIZE = 10000000; // 10 MB in bytes
+
 app.post("/api/upload", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
+    }
+
+    if (req.file.size > MAX_FILE_SIZE) {
+      res.send("File size exceeds the limit of 10 MB");
+      return;
     }
 
     const { file_name } = req.body;

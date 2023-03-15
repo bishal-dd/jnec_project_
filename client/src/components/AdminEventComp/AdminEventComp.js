@@ -36,7 +36,9 @@ function AdminEventComp() {
       await axios
         .post("http://localhost:3001/api/post", formData)
         .then((event) => {
-          if (event.data === "event added") {
+          if (event.data === "Image size exceeds the limit of 10 MB") {
+            toast.error("Size of the image should be less than 10MB");
+          } else if (event.data === "event added") {
             toast.success("Event added");
           }
         });

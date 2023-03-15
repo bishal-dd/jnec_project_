@@ -5,8 +5,8 @@ export default function AboutusPageComp() {
   return (
     <div className="container">
       <div>
-        <h3 className="mt-5">Jigme Namgyel Engineering College </h3>
-        <p class="project-objectives mt-3">
+        <h3 className="mt-5 ">Jigme Namgyel Engineering College </h3>
+        <p class="aboutus-paragraph mt-3">
           JNEC is one of the constituent colleges of the Royal University of
           Bhutan (RUB) located in Dewathang. The College started with the
           infrastructure development in 1974 coinciding with the 3rd Five Year
@@ -21,8 +21,8 @@ export default function AboutusPageComp() {
         </p>
       </div>
       <div>
-        <h3 className="mt-5">University of Innsbruck </h3>
-        <p class="project-objectives mt-3">
+        <h3 className="mt-5 ">University of Innsbruck </h3>
+        <p class="aboutus-paragraph mt-3 ">
           University of Innsbruck has in totals 28000 students and 16 faculties.
           The Institute for Structural Engineering and Material Sciences belongs
           to the faculty of Engineering Sciences. It consists of 6 Units of

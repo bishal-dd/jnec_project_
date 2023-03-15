@@ -29,7 +29,7 @@ export default function NavbarComp() {
           />
 
           <div
-            class="collapse navbar-collapse justify-content-center"
+            class="collapse navbar-collapse justify-content-center text-center"
             id="navbarTogglerDemo03"
           >
             <ul class="navbar-nav mb-2 mb-lg-0">

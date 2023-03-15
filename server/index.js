@@ -40,38 +40,6 @@ const db = mysql.createPool({
 });
 
 app.get("/api/get", (req, res) => {
-  const sqlGet = "SELECT * FROM events ORDER BY event_id DESC LIMIT 3";
-  db.query(sqlGet, (err, result) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Error retrieving events from database");
-    } else {
-      const eventsWithImages = result.map(async (event) => {
-        const imageBuffer = event.event_image;
-        const image = sharp(imageBuffer);
-        const metadata = await image.metadata();
-        if (metadata.format === undefined) {
-          console.log("Invalid image format");
-        } else {
-          const imageData = Buffer.from(imageBuffer).toString("base64");
-          event.event_image = `data:image/${metadata.format};base64,${imageData}`;
-        }
-        return event;
-      });
-
-      Promise.all(eventsWithImages)
-        .then((results) => {
-          res.send(results);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).send("Error processing images");
-        });
-    }
-  });
-});
-
-app.get("/api/getall", (req, res) => {
   const sqlGet = "SELECT * FROM events ORDER BY event_id DESC";
   db.query(sqlGet, (err, result) => {
     if (err) {

@@ -37,7 +37,7 @@ export default function EventComp() {
       <div id="event-page" class="py-3">
         <div class="container">
           <div className="row ">
-            {event.map((item, index) => {
+            {event.slice(0, 3).map((item, index) => {
               const maxLength = 150;
               const shortDescription = item.event_description.substring(
                 0,

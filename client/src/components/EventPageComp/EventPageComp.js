@@ -10,7 +10,7 @@ export default function EventPageComp() {
 
   const loadEvent = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/getall");
+      const response = await axios.get("http://localhost:3001/api/get");
       setevent(response.data);
     } catch (error) {
       console.error(error);

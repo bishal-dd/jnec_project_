@@ -8,7 +8,7 @@ export default function FeedbackComp() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
-  const [displayedDownloads, setDisplayedDownloads] = useState(5);
+
   const [downloads, setDownloads] = useState([]);
 
   useEffect(() => {
@@ -61,12 +61,7 @@ export default function FeedbackComp() {
         toast.error("Error submitting feedback");
       });
   };
-  const handleSeeMore = () => {
-    setDisplayedDownloads(displayedDownloads + downloads.length);
-  };
-  const handleSeeLess = () => {
-    setDisplayedDownloads(displayedDownloads - downloads.length);
-  };
+
   return (
     <>
       <section id="get-started" class="get-started section-bg">
@@ -76,7 +71,7 @@ export default function FeedbackComp() {
               <div className="col-md-9 rounded-4" id="div_for_downloads">
                 <h3 className=" text-center">Downloads</h3>
                 <ul className="mt-3">
-                  {downloads.slice(0, displayedDownloads).map((item) => {
+                  {downloads.slice(0, 13).map((item) => {
                     console.log(item.fileName);
                     return (
                       <li key={item.id}>
@@ -91,23 +86,12 @@ export default function FeedbackComp() {
                     );
                   })}
                 </ul>
-                {displayedDownloads < downloads.length ? (
-                  <div>
-                    <button
-                      className="link-primary border border-0"
-                      onClick={handleSeeMore}
-                    >
-                      See more
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    className="link-primary border border-0"
-                    onClick={handleSeeLess}
-                  >
-                    See less
+
+                <div>
+                  <button className="link-primary border border-0">
+                    See more
                   </button>
-                )}
+                </div>
               </div>
             </div>
 

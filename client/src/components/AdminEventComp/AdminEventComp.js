@@ -144,7 +144,6 @@ function AdminEventComp() {
                 name="event_date"
                 value={event_date}
                 onChange={handleChange}
-                required
               />
             </div>
             <div class="form-group p-3">
@@ -183,6 +182,11 @@ function AdminEventComp() {
           &nbsp;&nbsp;&nbsp;
           <span>
             <Link class="btn btn-secondary pl-5" to="/adddownloads">
+              Downloads
+            </Link>
+          </span>
+          <span>
+            <Link class="btn btn-secondary pl-5" to="/admin_delete">
               Downloads
             </Link>
           </span>

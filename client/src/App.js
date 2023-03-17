@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminEditComp from "./components/AdminEditComp/AdminEditComp";
 import AdminDeleteComp from "./components/AdminDeleteComp/AdminDeleteComp";
+import DownloadsPageComp from "./components/DownloadsPageComp/DownloadsPageComp";
 
 function App() {
   // const [loggedin, setLoggedin] = useState([]);
@@ -48,6 +49,7 @@ function App() {
           <Route path="/adddownloads" element={<AdddownloadComp />} />
           <Route path="/admin_edit/:id" element={<AdminEditComp />} />
           <Route path="/admin_delete" element={<AdminDeleteComp />} />
+          <Route path="/downloads" element={<DownloadsPageComp />} />
         </Routes>
       </BrowserRouter>
     </>

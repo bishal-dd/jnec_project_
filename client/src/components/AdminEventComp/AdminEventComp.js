@@ -187,7 +187,7 @@ function AdminEventComp() {
           </span>
           <span>
             <Link class="btn btn-secondary pl-5" to="/admin_delete">
-              Downloads
+              Delete
             </Link>
           </span>
         </div>

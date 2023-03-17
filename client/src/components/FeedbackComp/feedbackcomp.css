@@ -20,4 +20,5 @@
 #div_for_downloads {
   background-color: white;
   max-height: 400px;
+  min-height: 400px;
 }

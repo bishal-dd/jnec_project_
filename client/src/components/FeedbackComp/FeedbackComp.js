@@ -71,18 +71,18 @@ export default function FeedbackComp() {
             <div className="col-5" id="container_for_the_downloads">
               <div className="col-md-9 rounded-4" id="div_for_downloads">
                 <h3 className=" text-center">Downloads</h3>
-                <ul className="list-group mt-3">
+                <ul className=" mt-3">
                   {downloads.slice(0, 13).map((item) => {
                     console.log(item.fileName);
                     return (
-                      <li class="list-group-item" key={item.id}>
-                        <button
+                      <li class="text-wrap" key={item.id}>
+                        <a
                           className="link-dark border border-0"
                           onClick={() => handleDownload(item.file_name)}
                           id="download_list"
                         >
-                          {item.file_name}
-                        </button>
+                          <div>{item.file_name}</div>
+                        </a>
                       </li>
                     );
                   })}

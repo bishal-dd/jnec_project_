@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { toast } from "react-toastify";
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./admineditcomp.css";
 import { FaFileImage } from "react-icons/fa";
 

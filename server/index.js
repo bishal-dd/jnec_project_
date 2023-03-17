@@ -253,6 +253,13 @@ app.get("/api/delete/:id", (req, res) => {
     res.send("Event Deleted");
   });
 });
+app.get("/api/filedelete/:id", (req, res) => {
+  const sqlDelete = "DELETE FROM downloads WHERE id = ?;";
+
+  db.query(sqlDelete, [req.params.id], (err, result) => {
+    res.send("File Deleted");
+  });
+});
 
 app.post("/api/edit/:id", upload.single("event_image"), async (req, res) => {
   const { event_name, event_description, event_date, event_link } = req.body;

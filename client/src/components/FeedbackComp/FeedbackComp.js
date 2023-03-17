@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./feedbackcomp.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function FeedbackComp() {
   const [name, setName] = useState("");
@@ -70,11 +71,11 @@ export default function FeedbackComp() {
             <div className="col-5" id="container_for_the_downloads">
               <div className="col-md-9 rounded-4" id="div_for_downloads">
                 <h3 className=" text-center">Downloads</h3>
-                <ul className="mt-3">
+                <ul className="list-group mt-3">
                   {downloads.slice(0, 13).map((item) => {
                     console.log(item.fileName);
                     return (
-                      <li key={item.id}>
+                      <li class="list-group-item" key={item.id}>
                         <button
                           className="link-dark border border-0"
                           onClick={() => handleDownload(item.file_name)}
@@ -88,13 +89,15 @@ export default function FeedbackComp() {
                 </ul>
 
                 <div>
-                  <button className="link-primary border border-0">
+                  <Link
+                    to="/downloads"
+                    className="link-primary border border-0"
+                  >
                     See more
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
-
             <div
               class="col-md-3 p-3 text-center justify-content-center  rounded-4 "
               data-aos="fade"

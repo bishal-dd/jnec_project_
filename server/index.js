@@ -115,24 +115,56 @@ app.post("/api/post", upload.single("event_image"), async (req, res) => {
 
   // Use a default image if no image was uploaded
   if (!image) {
-    const defaultImagePath = path.join(__dirname, "assets", "default.jpg");
-    image = await fs.promises.readFile(defaultImagePath);
-  }
-
-  const sqlInsert =
-    "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
-  db.query(
-    sqlInsert,
-    [event_name, event_description, image, event_date, event_link],
-    (err, result) => {
+    const sqlGet = "SELECT * FROM default_image";
+    db.query(sqlGet, (err, result) => {
       if (err) {
         console.log(err);
-        res.status(500).send("Error adding event to database");
+        res.status(500).send("Error retrieving events from database");
+      } else if (result.length > 0) {
+        const defaultImage = result[0].default_image;
+        image = Buffer.from(defaultImage, "base64");
+        const metadata = sharp(defaultImage).metadata();
+        if (metadata.format === undefined) {
+          console.log("Invalid image format");
+        } else {
+          const imageData = Buffer.from(defaultImage).toString("base64");
+          image = `data:image/${metadata.format};base64,${imageData}`;
+        }
+        const sqlInsert =
+          "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
+        db.query(
+          sqlInsert,
+          [event_name, event_description, image, event_date, event_link],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+              res.status(500).send("Error adding event to database");
+            } else {
+              res.send("event added");
+            }
+          }
+        );
       } else {
-        res.send("event added");
+        console.log("No default image found");
+        res.status(400).send("No default image found");
       }
-    }
-  );
+    });
+  } else {
+    const sqlInsert =
+      "INSERT INTO events (event_name, event_description, event_image, event_date, event_link ) VALUES (?, ?, ?, ?, ?);";
+    db.query(
+      sqlInsert,
+      [event_name, event_description, image, event_date, event_link],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send("Error adding event to database");
+        } else {
+          res.send("event added");
+        }
+      }
+    );
+  }
 });
 
 app.post("/api/adminlogin", (req, res) => {

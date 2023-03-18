@@ -11,8 +11,7 @@ import AboutusPageComp from "./components/AboutusPageComp/AboutusPageComp";
 import ProtectedRoute from "./Route/ProtectedRoute";
 import ProjectmemberComp from "./components/ProjectmemberComp/ProjectmemberComp";
 import AdddownloadComp from "./components/AdddownloadComp/AdddownloadComp";
-import { useEffect, useState } from "react";
-import axios from "axios";
+
 import AdminEditComp from "./components/AdminEditComp/AdminEditComp";
 import AdminDeleteComp from "./components/AdminDeleteComp/AdminDeleteComp";
 import DownloadsPageComp from "./components/DownloadsPageComp/DownloadsPageComp";

@@ -15,6 +15,7 @@ import AdddownloadComp from "./components/AdddownloadComp/AdddownloadComp";
 import AdminEditComp from "./components/AdminEditComp/AdminEditComp";
 import AdminDeleteComp from "./components/AdminDeleteComp/AdminDeleteComp";
 import DownloadsPageComp from "./components/DownloadsPageComp/DownloadsPageComp";
+import AdminPathComp from "./components/AdminPathComp/AdminPathComp";
 
 function App() {
   // const [loggedin, setLoggedin] = useState([]);
@@ -49,6 +50,7 @@ function App() {
           <Route path="/admin_edit/:id" element={<AdminEditComp />} />
           <Route path="/admin_delete" element={<AdminDeleteComp />} />
           <Route path="/downloads" element={<DownloadsPageComp />} />
+          <Route path="/admin_path" element={<AdminPathComp />} />
         </Routes>
       </BrowserRouter>
     </>

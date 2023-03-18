@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./admineventcomp.css";
 import { FaFileImage } from "react-icons/fa";
 
@@ -178,17 +178,6 @@ function AdminEventComp() {
             >
               Logout
             </button>
-          </span>
-          &nbsp;&nbsp;&nbsp;
-          <span>
-            <Link class="btn btn-secondary pl-5" to="/adddownloads">
-              Downloads
-            </Link>
-          </span>
-          <span>
-            <Link class="btn btn-secondary pl-5" to="/admin_delete">
-              Delete
-            </Link>
           </span>
         </div>
       </div>

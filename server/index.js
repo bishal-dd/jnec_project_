@@ -4,14 +4,19 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql2");
 const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
+
 const session = require("express-session");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const sharp = require("sharp");
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: {
+    fieldSize: 1024 * 1024 * 10, // 10MB
+  },
+});
 
 app.use(cors());
 app.use(express.json());
@@ -24,12 +29,6 @@ app.use(
     saveUninitialized: false,
   })
 );
-
-cloudinary.config({
-  cloud_name: "dnmtsuwhc",
-  api_key: "986122193756244",
-  api_secret: "GkKJj3GrIR9nd0q6Li0q-6pKK38",
-});
 
 const db = mysql.createPool({
   host: "localhost",
@@ -262,8 +261,10 @@ app.get("/api/filedelete/:id", (req, res) => {
 });
 
 app.post("/api/edit/:id", upload.single("event_image"), async (req, res) => {
-  const { event_name, event_description, event_date, event_link } = req.body;
-  const id = [req.params.id];
+  const { event_name, event_description, event_image, event_date, event_link } =
+    req.body;
+
+  const id = req.params.id;
 
   let image = req.file ? req.file.buffer : null;
   const imageSize = image ? image.length : 0;
@@ -276,14 +277,13 @@ app.post("/api/edit/:id", upload.single("event_image"), async (req, res) => {
 
   // Use a default image if no image was uploaded
   if (!image) {
-    const defaultImagePath = path.join(__dirname, "assets", "default.jpg");
-    image = await fs.promises.readFile(defaultImagePath);
+    image = event_image;
   }
   const sqlInsert =
     "UPDATE events SET event_name = ?, event_description = ?, event_image = ?, event_date = ?, event_link = ? WHERE event_id = ?";
   db.query(
     sqlInsert,
-    [event_name, event_description, image, event_date, event_link, id],
+    [event_name, event_description, image, event_date, event_link, Number(id)],
     (err, result) => {
       if (err) {
         console.log(err);

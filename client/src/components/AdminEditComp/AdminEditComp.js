@@ -34,7 +34,7 @@ function AdminEditComp() {
     formData.append("event_link", state.event_link);
     formData.append("event_date", state.event_date);
 
-    if (state.event_image) {
+    if (state.event_image === String) {
       const base64String = state.event_image.split(",")[1];
       const mimeType = state.event_image
         .split(",")[0]
@@ -50,7 +50,7 @@ function AdminEditComp() {
       formData.append("event_image", blob);
     } else {
       // Append the previous image if no new image has been selected
-      formData.append("event_image", item.event_image);
+      formData.append("event_image", state.event_image);
     }
 
     try {

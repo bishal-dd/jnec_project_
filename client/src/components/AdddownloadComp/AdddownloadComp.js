@@ -53,11 +53,17 @@ export default function AdddownloadComp() {
             name="file_name"
             value={file_name}
             onChange={handleInputChange}
+            required
           />
         </Form.Group>
         <Form.Group controlId="formFile">
           <Form.Label>Choose File</Form.Label>
-          <Form.Control type="file" name="file" onChange={handleFileUpload} />
+          <Form.Control
+            type="file"
+            name="file"
+            onChange={handleFileUpload}
+            required
+          />
         </Form.Group>
 
         <Button variant="primary" className=" border-0 mt-3" type="submit">

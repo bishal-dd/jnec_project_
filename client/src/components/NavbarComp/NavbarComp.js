@@ -2,6 +2,8 @@
 import React from "react";
 import "./navbarcomp.css";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.jpeg";
+import uni_logo from "../../assets/uni_logo.jpeg";
 
 export default function NavbarComp() {
   return (
@@ -20,10 +22,10 @@ export default function NavbarComp() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <img
-            src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678645849/u5ffbzghsirppkrzughq.png"
+            src={logo}
             width="50"
             class="rounded-2"
-            height="40"
+            height="50"
             alt="logo"
             id="logo_image"
           />
@@ -71,6 +73,22 @@ export default function NavbarComp() {
               </li>
             </ul>
           </div>
+          <img
+            src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678645849/u5ffbzghsirppkrzughq.png"
+            width="50"
+            class="rounded-2"
+            height="40"
+            alt="logo"
+            id="logo_image"
+          />
+          <img
+            src={uni_logo}
+            width="50"
+            class="rounded-2"
+            height="40"
+            alt="logo"
+            id="logo_image"
+          />
         </div>
       </nav>
     </>

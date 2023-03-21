@@ -67,21 +67,27 @@ export default function NavbarComp() {
               </li>
             </ul>
           </div>
-          <img
-            src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678645849/u5ffbzghsirppkrzughq.png"
-            width="50"
-            class="rounded-2"
-            height="40"
-            alt="logo"
-            id="logo_image"
-          />
-          <img
-            src={uni_logo}
-            width="130"
-            class="rounded-2"
-            height="40"
-            alt="logo"
-          />
+          <div className="row">
+            <div className="col">
+              <img
+                src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678645849/u5ffbzghsirppkrzughq.png"
+                width="50"
+                class="rounded-2"
+                height="40"
+                alt="logo"
+                id="logo_image"
+              />
+            </div>
+            <div className="col">
+              <img
+                src={uni_logo}
+                width="130"
+                class="rounded-2"
+                height="40"
+                alt="logo"
+              />
+            </div>
+          </div>
         </div>
       </nav>
     </>

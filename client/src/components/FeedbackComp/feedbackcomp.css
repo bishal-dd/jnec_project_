@@ -16,6 +16,7 @@
 }
 #download_list {
   background-color: white;
+  max-width: 10px;
 }
 #div_for_downloads {
   background-color: white;

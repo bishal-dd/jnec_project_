@@ -75,11 +75,10 @@ export default function FeedbackComp() {
                   {downloads.slice(0, 13).map((item) => {
                     console.log(item.fileName);
                     return (
-                      <li class="text-wrap w-100" key={item.id}>
+                      <li key={item.id} id="download_list">
                         <p
                           className="link-dark border border-0 text-wrap"
                           onClick={() => handleDownload(item.file_name)}
-                          id="download_list"
                         >
                           {item.file_name}
                         </p>

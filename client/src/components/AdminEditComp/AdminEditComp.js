@@ -65,7 +65,7 @@ function AdminEditComp() {
         });
       setState(initialState);
 
-      navigate("/adminevents");
+      navigate("/admin_delete");
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -171,7 +171,7 @@ function AdminEditComp() {
                 class="btn  border-dark border-0"
                 onClick={(e) => handleSubmit(item.event_id, e)}
               >
-                Create Event
+                Edit Event
               </button>
             </div>
           </form>

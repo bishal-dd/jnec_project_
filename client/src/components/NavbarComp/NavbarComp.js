@@ -21,14 +21,7 @@ export default function NavbarComp() {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <img
-            src={logo}
-            width="50"
-            class="rounded-2"
-            height="50"
-            alt="logo"
-            id="logo_image"
-          />
+          <img src={logo} width="60" class="rounded-2" height="45" alt="logo" />
 
           <div
             class="collapse navbar-collapse justify-content-center text-center"
@@ -53,6 +46,7 @@ export default function NavbarComp() {
                   About Us
                 </Link>
               </li>
+
               <li class="nav-item">
                 <Link
                   class="nav-link active rounded-5"
@@ -83,11 +77,10 @@ export default function NavbarComp() {
           />
           <img
             src={uni_logo}
-            width="50"
+            width="130"
             class="rounded-2"
             height="40"
             alt="logo"
-            id="logo_image"
           />
         </div>
       </nav>

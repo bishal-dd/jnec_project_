@@ -77,9 +77,7 @@ function AdminEditComp() {
     if (name === "event_image") {
       setState({ ...state, [name]: files[0] });
     } else if (name === "event_date") {
-      const [year, month, day] = value.split("-"); // split the input value into year, month, and day
-      const formattedDate = `${day}-${month}-${year}`; // format the date as dd/mm/yyyy
-      setState({ ...state, [name]: formattedDate });
+      setState({ ...state, [name]: value });
     } else {
       setState({ ...state, [name]: value });
     }

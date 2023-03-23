@@ -5,17 +5,8 @@ export default function ProjectmemberComp() {
   return (
     <div className="container mt-5 ">
       <h2 className="text-center mb-5">Project Members</h2>
-      <div className="row  d-flex justify-content-center ">
-        <div className="col text-center">
-          <img
-            src="https://res.cloudinary.com/dnmtsuwhc/image/upload/v1678527860/loxb7isez3u80y9vdbwj.png"
-            alt="metting"
-            className="w-50"
-          />
-        </div>
-      </div>
 
-      <div className="row mt-4" id="aboutus_row">
+      <div className="row mt-4 justify-content-center" id="aboutus_row">
         <div className="col-md-6">
           <h4>JNEC</h4>
           <ol className="">

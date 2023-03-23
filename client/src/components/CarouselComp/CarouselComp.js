@@ -19,7 +19,7 @@ export default function CarouselComp() {
   ];
   return (
     <>
-      <Carousel>
+      <Carousel className="carousel-wrapper">
         {images.map((image, index) => (
           <Carousel.Item key={index}>
             <img

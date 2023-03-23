@@ -27,7 +27,33 @@ export default function NavbarComp() {
             class="collapse navbar-collapse justify-content-center text-center"
             id="navbarTogglerDemo03"
           >
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Dropdown link
+                </a>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <a class="dropdown-item" href="#">
+                    JNEC
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Another action
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Something else here
+                  </a>
+                </div>
+              </li>
               <li class="nav-item">
                 <Link
                   to="/"

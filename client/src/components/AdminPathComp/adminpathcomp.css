@@ -1,0 +1,6 @@
+#admin_card {
+  min-height: 100px;
+}
+#admin_card:hover {
+  box-shadow: 5px 10px 30px grey;
+}

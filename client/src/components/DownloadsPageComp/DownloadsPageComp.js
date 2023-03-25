@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./downloadpagecomp.css";
 import axios from "axios";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 export default function DownloadsPageComp() {

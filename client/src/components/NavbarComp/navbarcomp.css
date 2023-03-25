@@ -5,14 +5,17 @@ a {
   color: white;
   border-radius: 25px;
 }
+
 #navbar {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 60px;
   background-color: #f8f8f7;
 }
 
 #logo_image {
-  right: 0px;
-  background-color: white;
-}
-.nav-link {
-  font-weight: bold;
+  width: 100px;
+  height: auto;
+  max-height: 120px;
+  background-color: rgb(233, 232, 232);
 }

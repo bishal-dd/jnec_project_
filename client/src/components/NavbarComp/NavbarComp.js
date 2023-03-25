@@ -21,13 +21,12 @@ export default function NavbarComp() {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <img src={logo} width="60" class="rounded-2" height="45" alt="logo" />
-
+          <img src={logo} class="rounded-5" alt="logo" id="logo_image" />
           <div
-            class="collapse navbar-collapse justify-content-center text-center"
+            class="collapse navbar-collapse justify-content-center"
             id="navbarTogglerDemo03"
           >
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ">
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -37,20 +36,30 @@ export default function NavbarComp() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Dropdown link
+                  Links
                 </a>
                 <div
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="#">
+                  <a
+                    class="dropdown-item"
+                    href="https://www.jnec.edu.bt/en/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     JNEC
                   </a>
-                  <a class="dropdown-item" href="#">
-                    Another action
+                  <a
+                    class="dropdown-item"
+                    href="https://www.uibk.ac.at/en/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    UIBK
                   </a>
                   <a class="dropdown-item" href="#">
-                    Something else here
+                    Placeholder
                   </a>
                 </div>
               </li>
@@ -72,6 +81,7 @@ export default function NavbarComp() {
                   About Us
                 </Link>
               </li>
+              <li class="nav-item"></li>
 
               <li class="nav-item">
                 <Link
@@ -91,6 +101,15 @@ export default function NavbarComp() {
                   Project Members
                 </Link>
               </li>
+              <li class="nav-item">
+                <Link
+                  class="nav-link active rounded-5"
+                  aria-current="page"
+                  to="/downloads"
+                >
+                  Downloads
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="row">
@@ -101,7 +120,6 @@ export default function NavbarComp() {
                 class="rounded-2"
                 height="40"
                 alt="logo"
-                id="logo_image"
               />
             </div>
             <div className="col">

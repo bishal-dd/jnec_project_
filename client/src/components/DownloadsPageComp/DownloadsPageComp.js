@@ -41,23 +41,34 @@ export default function DownloadsPageComp() {
   return (
     <Container className="my-5">
       <h1 className="text-center mb-5">Downloads</h1>
-      <Row>
-        {downloads.map((file, index) => (
-          <Col key={index} md={6} lg={4}>
-            <Card className="mb-4">
-              <Card.Body>
-                <Card.Title>{file.file_name}</Card.Title>
-
-                <Button
-                  variant="primary"
-                  onClick={() => handleDownload(file.file_name)}
-                >
-                  Download
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
+      <Row className="justify-content-center">
+        <Col md={6} lg={4}>
+          <table class="table text-center mt-5 table-bordered border-dark">
+            <thead>
+              <tr>
+                <th scope="col">File_Name</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {downloads.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.file_name}</td>
+                    <td>
+                      <button
+                        className="btn"
+                        onClick={() => handleDownload(item.file_name)}
+                      >
+                        Download
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Col>
       </Row>
     </Container>
   );
